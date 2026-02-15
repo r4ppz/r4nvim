@@ -13,7 +13,6 @@ return {
     --     easing = "outCubic",
     --   },
     -- },
-    image = {},
 
     notifier = {
       enabled = false,
