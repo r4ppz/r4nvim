@@ -2,7 +2,7 @@
 
 > [!WARNING]
 > This configuration will probably not work for you. I basically created my own editor and deveveloper environment. This
-> is not idiomatic or follows neovim philosophy (idk). I use arrow keys just because neovim let me.
+> is not idiomatic or follows neovim philosophy (idk). I use arrow keys just because neovim let me :p
 
 ---
 
