@@ -280,16 +280,6 @@ for i, mark in ipairs(marks) do
   map("n", "g" .. i, "`" .. mark, { desc = "Exact jump to global mark " .. mark })
 end
 
--- Neovim 0.10+ has a built-in provider for this
-vim.keymap.set("n", "gx", function()
-  local url = vim.fn.expand("<cfile>")
-  if url:match("https?://") then
-    vim.ui.open(url)
-  else
-    vim.notify("Not a valid URL under cursor", vim.log.levels.ERROR)
-  end
-end, { desc = "Open URL under cursor" })
-
 -------------------------------------------------------------
 -- Plugins? (other keybinds are in the plugins lua files)
 -------------------------------------------------------------

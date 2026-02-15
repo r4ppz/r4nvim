@@ -1,14 +1,8 @@
 # My Personal Neovim Configuration
 
 > [!WARNING]
-> This configuration will probably not work for you. I basically created my own editor and deveveloper environment. This
-> is not idiomatic or follows neovim philosophy (idk). I use arrow keys just because neovim let me :p
-
----
-
-This is my messy Neovim setup that I use for everyday coding ([PDE](https://www.youtube.com/watch?v=QMVIJhC9Veg&t=470s)).
-
-I use a lot of plugins, but it is still fast asf compared to other editors (JetBrains, VSCode).
+> This configuration will probably not work for you. I basically created my own editor and development environment. This
+> is not idiomatic or follows neovim/vim philosophy. I use arrow keys just because neovim let me :p
 
 ---
 

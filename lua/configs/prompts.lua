@@ -53,7 +53,7 @@ local prompts = {
 
       ## Type Breakdown
       Explain what each part of the type means.
-      Explain generics, constraints, unions, overloads, etc.
+      Explain generics, constraints, unions, overloads, etc (if available).
 
       ## What it does
       Plain English explanation of the behavior.
@@ -62,13 +62,13 @@ local prompts = {
       Real-world usage scenarios.
 
       ## Parameters
-      - `name` (type): practical explanation
+      - `name` (type): practical explanation (if available)
 
       ## Returns
-      - `name` (type): explain what is returned and what it means in practice
+      - `name` (type): practical explanation (if available)
 
       ## Example
-      A realistic/practical example showing input and output.
+      A realistic/practical example showing input, output and a short explanation.
 
       Docs to improve:
 
@@ -100,7 +100,6 @@ local prompts = {
       #selection
       Provide a **concise, factual description** of what this code snippet accomplishes.
 
-      Requirements:
       • Describe its observable behavior and purpose using neutral terminology.
       • Explain structural elements only when they directly impact functionality.
       • Keep explanation brief and directly tied to the snippet's content.
@@ -114,7 +113,6 @@ local prompts = {
 
       Provide a **comprehensive, detailed explanation** of this code snippet.
 
-      Requirements:
       • Explain how each syntactic element contributes to the overall behavior.
       • Describe data flow, control flow, and key interactions between components.
       • Highlight subtle behaviors or implications that may not be immediately obvious.
@@ -130,7 +128,6 @@ local prompts = {
 
         Provide a **conceptual overview** of this code's role and purpose.
 
-        Requirements:
         • Describe its functional responsibility within the broader context.
         • Identify the primary data transformations or relationships it establishes.
         • Explain design patterns or architectural roles only when explicitly evident in structure.
@@ -145,7 +142,6 @@ local prompts = {
 
       Provide a **structured analysis** that connects form to function.
 
-      Requirements:
       • Structure-Function Mapping:** Explain how syntactic elements work together to achieve the snippet's purpose.
       • Data Relationships: Trace how inputs, variables, or declarations transform to produce outputs or establish relationships.
       • Context Integration: Explain how this snippet interacts with its immediate surroundings when context is provided.
@@ -160,7 +156,6 @@ local prompts = {
 
       Provide a **strictly syntactic and semantic analysis** based solely on observable elements.
 
-      Requirements:
       • Decompose all expressions, declarations, and structural elements into fundamental components.
       • Map explicit relationships: data flow, control dependencies, and scope interactions visible in syntax.
       • Document all explicit state changes, side effects, or mutations directly present in the code.
