@@ -98,20 +98,19 @@ local prompts = {
   Explain = {
     prompt = dedent([[
       #selection
-      Provide a **concise, factual description** of what this code snippet accomplishes.
 
-      • Describe its observable behavior and purpose using neutral terminology.
-      • Explain structural elements only when they directly impact functionality.
-      • Keep explanation brief and directly tied to the snippet's content.
+      Provide a brief, accurate explanation of the selected code.
+
+      Make it practical. Explain the syntax if needed.
     ]]),
-    description = "Simple short explanation",
+    description = "Simple and short explanation",
   },
 
   ExplainDetailed = {
     prompt = dedent([[
       #selection
 
-      Provide a **comprehensive, detailed explanation** of this code snippet.
+      Provide a **comprehensive, detailed explanation** of the selected code.
 
       • Explain how each syntactic element contributes to the overall behavior.
       • Describe data flow, control flow, and key interactions between components.
@@ -119,49 +118,49 @@ local prompts = {
       • Maintain clarity: avoid overly verbose language, but do not omit important details.
       • Include relevant language-specific nuances or rules when they affect behavior.
     ]]),
-    description = "Detailed explanation of the code",
+    description = "Detailed and comprehensive explanation",
   },
 
   ExplainHighLevel = {
     prompt = dedent([[
         #selection
 
-        Provide a **conceptual overview** of this code's role and purpose.
+        Provide a **high level explanation** of the selected code.
 
         • Describe its functional responsibility within the broader context.
         • Identify the primary data transformations or relationships it establishes.
         • Explain design patterns or architectural roles only when explicitly evident in structure.
         • Reference syntax only when necessary to clarify conceptual behavior.
       ]]),
-    description = "High level explanation of the code",
+    description = "High-level/overview explanation",
   },
 
   ExplainBalanced = {
     prompt = dedent([[
       #selection
 
-      Provide a **structured analysis** that connects form to function.
+      Provide a **balanced explanation** of the selected code.
 
       • Structure-Function Mapping:** Explain how syntactic elements work together to achieve the snippet's purpose.
       • Data Relationships: Trace how inputs, variables, or declarations transform to produce outputs or establish relationships.
       • Context Integration: Explain how this snippet interacts with its immediate surroundings when context is provided.
       • Behavioral Clarity: Clarify non-obvious behaviors that are syntactically evident but not self-explanatory.
     ]]),
-    description = "Balanced explanation of the code",
+    description = "Balanced explanation",
   },
 
   ExplainLowLevel = {
     prompt = dedent([[
       #selection
 
-      Provide a **strictly syntactic and semantic analysis** based solely on observable elements.
+      Provide a **strictly syntactic and semantic analysis** on the selected code.
 
       • Decompose all expressions, declarations, and structural elements into fundamental components.
       • Map explicit relationships: data flow, control dependencies, and scope interactions visible in syntax.
       • Document all explicit state changes, side effects, or mutations directly present in the code.
       • Identify language-specific behaviors that are syntactically mandated (evaluation rules, precedence, binding).
     ]]),
-    description = "Low level explanation of the code",
+    description = "Low level explanation",
   },
 
   Log = {
@@ -174,7 +173,7 @@ local prompts = {
       • Use appropriate log levels (e.g., debug, info, warn, error).
       • Ensure logs provide meaningful context without exposing sensitive information.
     ]]),
-    description = "Add logging to selected code",
+    description = "Add logging",
   },
 
   Review = {
@@ -250,7 +249,7 @@ local prompts = {
       • Ensure test structure is clear, maintainable, and logically organized.
       • Include setup/teardown only when necessary.
     ]]),
-    description = "Generate tests for the selected code",
+    description = "Generate tests",
   },
 
   Commit = {
@@ -284,7 +283,7 @@ local prompts = {
 
       Requirement: Output ONLY the commit message. No preamble, no post-explanation, and no markdown code blocks unless the diff dictates it.
     ]]),
-    description = "Generate Conventional Commits",
+    description = "Generate conventional commits",
   },
 
   Idiomatic = {

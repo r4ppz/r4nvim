@@ -7,6 +7,14 @@ local map = require("utils.map")
 ----------------------------------------
 -- Personal?
 ----------------------------------------
+
+map("n", "<C-A-Up>", ":m .-2<CR>==<C-l>", { desc = "Move line up" })
+map("n", "<C-A-Down>", ":m .+1<CR>==<C-l>", { desc = "Move line down" })
+map("v", "<C-A-Up>", ":m '<-2<CR>gv=gv<C-l>", { desc = "Move selection up" })
+map("v", "<C-A-Down>", ":m '>+1<CR>gv=gv<C-l>", { desc = "Move selection down" })
+map("i", "<C-A-Up>", "<Esc>:m .-2<CR>==gi<C-o><C-l>", { desc = "Move selection up" })
+map("i", "<C-A-Down>", "<Esc>:m .+1<CR>==gi<C-o><C-l>", { desc = "Move selection up" })
+
 map("n", "<C-W>q", function()
   if vim.fn.winnr("$") > 1 then
     vim.cmd("q")
