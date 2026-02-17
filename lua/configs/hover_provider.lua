@@ -1,22 +1,31 @@
---- Strips markdown links from the provided lines,
---- replacing them with backticked text.
-local function strip_links(lines)
+local function decode_html_entities(lines)
   local out = {}
   for _, line in ipairs(lines) do
-    -- This pattern looks for [text](jdt://...)
-    -- It captures the text and swallows everything until the final ')'
-    local cleaned = line:gsub("%[(.-)%]%(jdt://.-%)", "`%1`")
-
-    -- Fallback for standard links that might remain
-    cleaned = cleaned:gsub("%[(.-)%]%b()", "`%1`")
-
+    local cleaned = line:gsub("&lt;", "<"):gsub("&gt;", ">"):gsub("&amp;", "&"):gsub("&quot;", '"')
     table.insert(out, cleaned)
   end
   return out
 end
 
---- Pads each line with leading and trailing spaces,
---- and adds empty lines at the start and end.
+local function unescape_markdown(lines)
+  local out = {}
+  for _, line in ipairs(lines) do
+    local cleaned = line:gsub("\\([%-%._%*%[%]%(%)%{%}])", "%1")
+    table.insert(out, cleaned)
+  end
+  return out
+end
+
+local function strip_links(lines)
+  local out = {}
+  for _, line in ipairs(lines) do
+    local cleaned = line:gsub("%[(.-)%]%(jdt://.-%)", "`%1`")
+    cleaned = cleaned:gsub("%[(.-)%]%b()", "`%1`")
+    table.insert(out, cleaned)
+  end
+  return out
+end
+
 local function pad_lines(lines)
   if #lines == 0 then
     return {}
@@ -33,19 +42,16 @@ return {
   name = "Hover Docs",
   priority = 1000,
   enabled = function(bufnr)
-    -- Only enable if there is an active LSP client
     return #vim.lsp.get_clients({ bufnr = bufnr }) > 0
   end,
 
   execute = function(_, done)
     local params = vim.lsp.util.make_position_params(0, "utf-16")
 
-    -- buf_request_all collects all responses before firing the callback
     vim.lsp.buf_request_all(0, "textDocument/hover", params, function(responses)
       local all_lines = {}
       local valid_result = false
 
-      -- Iterate through all LSP responses
       for _, response in pairs(responses) do
         if response.result and response.result.contents then
           valid_result = true
@@ -61,8 +67,9 @@ return {
         return
       end
 
-      -- Apply transformations
       all_lines = strip_links(all_lines)
+      all_lines = unescape_markdown(all_lines)
+      all_lines = decode_html_entities(all_lines)
       all_lines = pad_lines(all_lines)
 
       if vim.tbl_isempty(all_lines) then
