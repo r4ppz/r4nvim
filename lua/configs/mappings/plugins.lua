@@ -177,12 +177,3 @@ end, { desc = "telescope nvchad themes" })
 map("n", "<leader>um", "<cmd>Mason<CR>", { desc = "Mason UI" })
 map("n", "<leader>ul", "<cmd>Lazy<CR>", { desc = "Lazy UI" })
 map("n", "<leader>ui", "<cmd>MasonInstallAll<cr>", { desc = "Mason Install ALl" })
-
--- Tabs
-map("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "New tab" })
-map("n", "<leader>tX", "<cmd>tabonly<CR>", { desc = "Close all other tabs" })
-map("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close tab" })
-map("n", "<Tab>", "<cmd>tabnext<CR>", { desc = "Next tab" })
-map("n", "<S-Tab>", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
-map("n", "<leader>t<Right>", "<cmd>tabnext<CR>", { desc = "Next tab" })
-map("n", "<leader>t<Left>", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
