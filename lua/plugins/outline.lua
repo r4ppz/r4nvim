@@ -2,8 +2,6 @@ return {
   "hedyhli/outline.nvim",
   event = "LspAttach",
   config = function()
-    local map = require("utils.map")
-    map("n", "<leader>ls", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
     require("outline").setup({
       outline_window = {
         -- Percentage or integer of columns

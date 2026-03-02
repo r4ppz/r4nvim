@@ -163,3 +163,5 @@ map("n", "<leader>lo", function()
 end, {
   desc = "Outgoing Calls",
 })
+
+map("n", "<leader>ls", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
