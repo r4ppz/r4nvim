@@ -1,7 +1,7 @@
 # My Personal Neovim Configuration
 
 > [!WARNING]
-> This configuration will probably not work for you. I basically created my own editor and development environment. This
+> This configuration will probably not work for you. I basically created my own editor and development environment (IDE). This
 > is not idiomatic or follows neovim/vim philosophy. I use arrow keys just because neovim let me :p
 
 ---
