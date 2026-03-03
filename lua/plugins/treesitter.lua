@@ -9,6 +9,7 @@ return {
       "vim",
       "vimdoc",
       "markdown",
+      "latex",
       "markdown_inline",
       "query",
 

@@ -75,9 +75,9 @@ end
 local map = require("utils.map")
 
 local function on_attach(bufnr)
-  map("n", "<leader>a", send_to_copilotchat, { desc = "Add file(s) to CopilotChat", buffer = bufnr })
+  map({ "n", "v" }, "<leader>a", send_to_copilotchat, { desc = "Add file(s) to CopilotChat", buffer = bufnr })
 end
 
-map("n", "<leader>a", add_current_file_to_chat, { desc = "Add current file to CopilotChat" })
+map({ "n", "v" }, "<leader>a", add_current_file_to_chat, { desc = "Add current file to CopilotChat" })
 
 return on_attach

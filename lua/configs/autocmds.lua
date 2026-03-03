@@ -24,10 +24,16 @@ autocmd("BufReadPost", {
   end,
 })
 
--- This is better then annoying error msg when closing it
 autocmd("WinEnter", {
   callback = function()
-    if vim.bo.filetype == "copilot-chat" and #vim.api.nvim_list_wins() == 1 then
+    local panels = {
+      "copilot-chat",
+      "Help",
+      "Outline",
+    }
+    local ft = vim.bo.filetype
+
+    if vim.tbl_contains(panels, ft) and #vim.api.nvim_list_wins() == 1 then
       vim.cmd("quit")
     end
   end,

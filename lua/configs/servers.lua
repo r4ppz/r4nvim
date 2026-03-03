@@ -259,18 +259,6 @@ function M.setup(capabilities)
     filetypes = { "yml" },
   })
 
-  vim.lsp.config("docker_language_server", {
-    capabilities = capabilities,
-    root_markers = {
-      "docker-compose.yaml",
-      "docker-compose.yml",
-      "compose.yaml",
-      "compose.yml",
-      "Dockerfile",
-    },
-    filetypes = { "dockerfile" },
-  })
-
   vim.lsp.config("postgres_lsp", {
     capabilities = capabilities,
     root_markers = {

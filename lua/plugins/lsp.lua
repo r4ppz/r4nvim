@@ -17,9 +17,9 @@ local servers = {
 
   -- BACKEND
   "jdtls",
-  "docker_compose_language_service",
-  "lemminx",
   "docker_language_server",
+  "dockerls",
+  "lemminx",
   "postgres_lsp",
 
   "taplo",

@@ -25,6 +25,9 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     opts = {
+      latex = {
+        enabled = true,
+      },
       heading = {
         atx = false,
         icons = { "# ", "## ", "### ", "#### ", "##### ", "###### " },

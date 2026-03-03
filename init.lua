@@ -26,5 +26,5 @@ require("configs.options")
 require("configs.autocmds")
 
 vim.schedule(function()
-  require("configs.mappings")
+  require("configs.mappings.mappings")
 end)
