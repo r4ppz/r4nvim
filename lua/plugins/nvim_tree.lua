@@ -62,9 +62,16 @@ return {
       },
 
       on_attach = function(bufnr)
+        local map = require("utils.map")
         local on_attach = require("utils/nvim_tree_copilot")
+        local api = require("nvim-tree.api")
+
         require("nvim-tree.api").config.mappings.default_on_attach(bufnr)
         on_attach(bufnr)
+
+        map("n", "<C-S-Up>", api.node.show_info_popup, { buffer = bufnr, desc = "Info" })
+        map("n", "<C-]>", api.tree.change_root_to_node, { buffer = bufnr, desc = "cd" })
+        map("n", "<C-[>", api.tree.change_root_to_parent, { buffer = bufnr, desc = "cd .." })
       end,
     }
   end,
