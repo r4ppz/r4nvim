@@ -77,9 +77,9 @@ map({ "n", "v" }, "<S-M-Left>", ":vertical resize +2<CR>", { desc = "Increase wi
 map("v", "<", "<gv", { desc = "Indent left and reselect" })
 map("v", ">", ">gv", { desc = "Indent right and reselect" })
 
-map("n", "<C-s>", "<cmd>write<cr>", { desc = "Save file" })
-map("v", "<C-s>", "<cmd>write<cr>", { desc = "Save file" })
-map("i", "<C-s>", "<C-o>:write<CR>", { desc = "Save file" })
+map("n", "<C-s>", "<cmd>update<cr>", { desc = "Save file" })
+map("v", "<C-s>", "<cmd>update<cr>", { desc = "Save file" })
+map("i", "<C-s>", "<C-o>:update<CR>", { desc = "Save file" })
 
 map("n", "<M-Esc>", "<cmd>noh<CR>", { desc = "Clear highlights" })
 
