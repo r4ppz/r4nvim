@@ -148,8 +148,8 @@ end
 
 -- Tabs
 map("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "New tab" })
-map("n", "<leader>tX", "<cmd>tabonly<CR>", { desc = "Close all other tabs" })
-map("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close tab" })
+map("n", "<leader>tQ", "<cmd>tabonly<CR>", { desc = "Close all other tabs" })
+map("n", "<leader>tq", "<cmd>tabclose<CR>", { desc = "Close tab" })
 map("n", "<Tab>", "<cmd>tabnext<CR>", { desc = "Next tab" })
 map("n", "<S-Tab>", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
 map("n", "<leader>t<Right>", "<cmd>tabnext<CR>", { desc = "Next tab" })
