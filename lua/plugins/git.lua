@@ -34,6 +34,22 @@ return {
           },
         },
       },
+
+      config = function(_, opts)
+        require("diffview").setup(opts)
+
+        -- Disable LSP for Diffview buffers
+        vim.api.nvim_create_autocmd("LspAttach", {
+          group = vim.api.nvim_create_augroup("DiffviewLSP", { clear = true }),
+          callback = function(args)
+            if vim.api.nvim_buf_get_name(args.buf):match("^diffview://") then
+              vim.schedule(function()
+                vim.lsp.buf_detach_client(args.buf, args.data.client_id)
+              end)
+            end
+          end,
+        })
+      end,
     },
   },
   event = "VeryLazy",
