@@ -101,9 +101,9 @@ local safe_buf_action = require("utils.safe_buf_action")
 
 map("n", "<leader>n", "<cmd>enew<CR>", { desc = "Buffer new" })
 
--- change buffer (Protected)
+-- change buffer
 map(
-  { "n" },
+  { "n", "v" },
   "<M-Right>",
   safe_buf_action(function()
     require("nvchad.tabufline").next()
@@ -111,7 +111,7 @@ map(
   { desc = "Buffer goto next" }
 )
 map(
-  { "n" },
+  { "n", "v" },
   "<M-Left>",
   safe_buf_action(function()
     require("nvchad.tabufline").prev()
@@ -119,9 +119,9 @@ map(
   { desc = "Buffer goto prev" }
 )
 
--- move buffer (Protected)
+-- move buffer
 map(
-  { "n" },
+  { "n", "v" },
   "<C-M-Right>",
   safe_buf_action(function()
     require("nvchad.tabufline").move_buf(1)
@@ -129,7 +129,7 @@ map(
   { desc = "move buffer to the right" }
 )
 map(
-  { "n" },
+  { "n", "v" },
   "<C-M-Left>",
   safe_buf_action(function()
     require("nvchad.tabufline").move_buf(-1)
@@ -166,8 +166,8 @@ map(
 )
 
 ---------------------------------------------------------------------
+-- NVCHAD I think
 
--- NVCHAD
 map("n", "<leader>vc", "<cmd>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" })
 map("n", "<leader>vt", function()
   require("nvchad.themes").open()
@@ -177,3 +177,21 @@ end, { desc = "telescope nvchad themes" })
 map("n", "<leader>um", "<cmd>Mason<CR>", { desc = "Mason UI" })
 map("n", "<leader>ul", "<cmd>Lazy<CR>", { desc = "Lazy UI" })
 map("n", "<leader>ui", "<cmd>MasonInstallAll<cr>", { desc = "Mason Install ALl" })
+
+-- Keyboard users
+map("n", "<C-t>", function()
+  require("menu").open("default")
+end, {})
+
+-- mouse users + nvimtree users!
+map({ "n", "v" }, "<RightMouse>", function()
+  require("menu.utils").delete_old_menus()
+
+  vim.cmd.exec('"normal! \\<RightMouse>"')
+
+  -- clicked buf
+  local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
+  local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or "default"
+
+  require("menu").open(options, { mouse = true })
+end, {})
