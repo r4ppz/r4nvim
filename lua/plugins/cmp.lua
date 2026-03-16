@@ -126,8 +126,8 @@ return {
         documentation = {
           border = "single",
           winhighlight = "Normal:CmpDoc,FloatBorder:CmpDocBorder",
-          max_width = 80,
-          max_height = 20,
+          max_width = 70,
+          max_height = 15,
         },
       },
 

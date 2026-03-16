@@ -2,6 +2,8 @@ local opt = vim.opt
 local o = vim.o
 local g = vim.g
 
+opt.pumheight = 15
+
 -- Session
 opt.shada = ""
 
