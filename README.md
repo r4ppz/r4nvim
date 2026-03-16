@@ -13,7 +13,7 @@
 <img src="img/highlight2.png" >
 
 <details>
-<summary>Screenshots</summary>
+<summary>More screenshots</summary>
 
 > Some of the things I liked:
 
@@ -28,3 +28,67 @@
 | <img src="img/diff.png" /><br><sub>DiffView</sub>                       | <img src="img/inline-diff.png" /><br><sub>Inline Diff</sub>                 |
 | <img src="img/outline.png" /><br><sub>Symbols Outline</sub>             | <img src="img/file-manager.png" /><br><sub>File Manager</sub>               |
 | <img src="img/error.png" /><br><sub>Error Display</sub>                 |                                                                             |
+
+</details>
+
+---
+
+The [keybinds](lua/configs/mappings/custom.lua) aren't really Vim-idiomatic since I use a lot of arrow keys, some weird combinations like Ctrl+Shift+ArrowKey, and also a lot of the Alt key. I also unbound some defaults like macros, etc. I basically recreated the way normal GUI editors do it like Ctrl+Left to skip a word etc. Then added my own (other vim features) that I think are ergonomic and fit perfectly with my keyboard layout.
+
+The tmux/hyprland/waybar config can be found in this repo: [Arch-dotfiles](https://github.com/r4ppz/Arch-dotfiles)
+
+## Plugins:
+
+> its a lot 😬
+
+Start up time is still below 1sec (`~23 miliseconds`) so I think it's still super duper fast compared to VSCode/IDE.
+
+- lazy.nvim
+- base46
+- ui
+- volt
+- menu
+- nvim-lspconfig
+- mason.nvim
+- mason-lspconfig.nvim
+- nvim-lsp-file-operations
+- lspsaga.nvim
+- typescript-tools.nvim
+- nvim-jdtls
+- nvim-lint
+- conform.nvim
+- nvim-treesitter
+- nvim-cmp
+- LuaSnip
+- cmp-nvim-lsp
+- cmp-nvim-lua
+- cmp_luasnip
+- cmp-buffer
+- cmp-async-path
+- friendly-snippets
+- nvim-autopairs
+- mini.surround
+- vim-matchup
+- indent-blankline.nvim
+- vim-illuminate
+- nvim-tree.lua
+- yazi.nvim
+- snacks.nvim
+- gitsigns.nvim
+- diffview.nvim
+- copilot.lua
+- CopilotChat.nvim
+- nvim-spectre
+- markdown-preview.nvim
+- render-markdown.nvim
+- dashboard-nvim
+- dropbar.nvim
+- outline.nvim
+- hover.nvim
+- which-key.nvim
+- nvim-web-devicons
+- gx.nvim
+- screenkey.nvim
+- todo-comments.nvim
+- plenary.nvim
+- telescope.nvim
