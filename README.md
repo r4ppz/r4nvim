@@ -8,9 +8,11 @@
 
 <img src="img/startup.png" >
 
-<img src="img/highlight.png" >
+<img src="img/highlight1.png" >
 
 <img src="img/highlight2.png" >
+
+<img src="img/highlight3.png" >
 
 <details>
 <summary>More screenshots</summary>
@@ -27,7 +29,7 @@
 | <img src="img/floating-terminal.png" /><br><sub>Floating Terminal</sub> | <img src="img/vertical-terminal.png" /><br><sub>Vertical Terminal</sub>     |
 | <img src="img/diff.png" /><br><sub>DiffView</sub>                       | <img src="img/inline-diff.png" /><br><sub>Inline Diff</sub>                 |
 | <img src="img/outline.png" /><br><sub>Symbols Outline</sub>             | <img src="img/file-manager.png" /><br><sub>File Manager</sub>               |
-| <img src="img/error.png" /><br><sub>Error Display</sub>                 |                                                                             |
+| <img src="img/error.png" /><br><sub>Error Display</sub>                 | <img src="img/yazi.png" /><br><sub>Yazi</sub>                               |
 
 </details>
 
