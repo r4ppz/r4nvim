@@ -35,15 +35,13 @@
 
 ---
 
-The [keybinds](lua/configs/mappings/custom.lua) aren't really Vim-idiomatic since I use a lot of arrow keys, some weird combinations like Ctrl+Shift+ArrowKey, and also a lot of the Alt key. I also unbound some defaults like macros, etc. I basically recreated the way normal GUI editors do it like Ctrl+Left to skip a word etc. Then added my own (other vim features) that I think are ergonomic and fit perfectly with my keyboard layout.
-
 The tmux/hyprland/waybar config can be found in this repo: [Arch-dotfiles](https://github.com/r4ppz/Arch-dotfiles)
 
 ## Plugins used:
 
 > it's a lot 😬 though I am still cleaning up and optimizing my workflow.
 
-Startup time is still under 1 second (`~23 milliseconds`), so it's super fast compared to VSCode or typical IDEs.
+Startup time is still under 1 second (`~23 milliseconds`), so it's still super duder fast compared to VSCode/typical IDEs.
 
 ```bash
 - folke/lazy.nvim
@@ -94,4 +92,68 @@ Startup time is still under 1 second (`~23 milliseconds`), so it's super fast co
 - NStefan002/screenkey.nvim
 - folke/todo-comments.nvim
 - nvim-lua/plenary.nvim
+```
+
+## LSP's and Treesitters:
+
+```bash
+# treesitter
+- luadoc
+- printf
+- vim
+- vimdoc
+- markdown
+- latex
+- markdown_inline
+- query
+- sql
+- lua
+- bash
+- java
+- rust
+- python
+- c
+- asm
+- cpp
+- hyprlang
+- yaml
+- toml
+- xml
+- json
+- html
+- css
+- javascript
+- typescript
+- tsx
+- diff
+- git_config
+- gitcommit
+- git_rebase
+- gitignore
+- gitattributes
+- regex
+
+# LSP's
+- html
+- cssls
+- jsonls
+- yamlls
+- marksman
+- eslint
+- cssmodules_ls
+- css_variables
+- jdtls
+- docker_language_server
+- dockerls
+- lemminx
+- postgres_lsp
+- taplo
+- lua_ls
+- pyright
+- bashls
+- rust_analyzer
+- hyprls
+- clangd
+- asm_lsp
+}
 ```

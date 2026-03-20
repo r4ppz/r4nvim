@@ -267,7 +267,7 @@ local prompts = {
       Convention: Conventional Commits (Project Agnostic).
 
       Format:
-      <type>(<scope>): <summary>
+      <type>(<scope>): <summary> [MUST BE < 70 CHARACTER!]
       <BLANK LINE>
       <body>
       <BLANK LINE>
