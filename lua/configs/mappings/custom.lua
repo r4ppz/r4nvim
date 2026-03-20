@@ -109,9 +109,6 @@ map("n", "c", '"_c', { desc = "Change text without yanking" })
 
 map({ "n", "v" }, "!", "^", { desc = "Jump to first non-blank character of the line" })
 map({ "n", "v" }, "@", "g_", { desc = "Jump to last non-blank character of line" })
--- simulate the default terminal binds
-map({ "n", "v" }, "<c-a>", "^", { desc = "Jump to first non-blank character of the line" })
-map({ "n", "v" }, "<c-e>", "g_", { desc = "Jump to last non-blank character of line" })
 
 -- Highlights the word without jumping to the next occurrence.
 -- Uses case-insensitive search and enables 'hlsearch'.

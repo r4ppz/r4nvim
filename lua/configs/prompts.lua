@@ -276,10 +276,10 @@ local prompts = {
       Constraints:
       1. Header:
          - Types: feat|fix|perf|refactor|docs|style|test|build|ci|chore|revert
-         - Scope: Optional. Use the specific module or package name affected.
+         - Scope: Optional. Use the specific module/package/filename name affected.
          - Summary: Mandatory. Use imperative, present tense ("add" not "added"). Lowercase. No trailing period.
       2. Body:
-         - Mandatory unless type is "docs". Must be >20 characters.
+         - Mandatory unless type is "docs". Must be > 20 characters.
          - Content: Focus on the "why" of the change. Compare previous vs. new behavior.
          - Style: Imperative, present tense.
       3. Footer (Optional):
