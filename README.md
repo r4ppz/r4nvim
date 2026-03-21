@@ -1,8 +1,8 @@
 # My Personal Neovim Configuration
 
 > [!WARNING]
-> This configuration will probably not work for you. I basically created my own editor and development environment (IDE). This
-> is not idiomatic or follows neovim/vim philosophy. I use a lot of plugins and arrow keys just because neovim let me :p
+> This configuration will probably not work for you. I basically created my own editor/development environment (IDE).
+> This is not idiomatic or follows neovim/vim philosophy. I use a lot of plugins and arrow keys just because neovim let me :p
 
 ---
 
@@ -12,12 +12,8 @@
 
 <img src="img/highlight2.png" >
 
-<img src="img/highlight3.png" >
-
 <details>
-<summary>More screenshots</summary>
-
-> Some of the things I liked:
+<summary>Some of the features I liked</summary>
 
 |                                                                         |                                                                             |
 | ----------------------------------------------------------------------- | --------------------------------------------------------------------------- |
@@ -33,17 +29,44 @@
 
 </details>
 
+<br>
+
+This repository is meant as a reference for me (for you too, to get inspiration maybe?) and to document my config.
+
+Keybinds are heavily configured and personalized. Many arrow-keys, alt-keys, and non-defaults are used.
+This is to maintain consistency with my compositor/WM, Shell, GUI programs, Tmux workflow, etc.
+
+Tmux/Hyprland/Waybar config can be found in this repo: [Arch-dotfiles](https://github.com/r4ppz/Arch-dotfiles)
+
 ---
 
-The tmux/hyprland/waybar config can be found in this repo: [Arch-dotfiles](https://github.com/r4ppz/Arch-dotfiles)
+### Install & Use:
+
+> I don't use Windows so this will probably not work well in there.
+
+```bash
+# Install & run
+git clone https://github.com/r4ppz/nvZzz.git ~/.config/nvim && nvim
+
+# inside, run
+# :MasonInstallAll
+
+# To uninstall
+rm -rf ~/.config/nvim
+rm -rf ~/.local/state/nvim
+rm -rf ~/.local/share/nvim
+```
 
 ## Plugins used:
 
 > it's a lot 😬 though I am still cleaning up and optimizing my workflow.
 
-Startup time is still under 1 second (`~23 milliseconds`), so it's still super duder fast compared to VSCode/typical IDEs.
+Startup time is still under 1 second (`~23 milliseconds`), so it's super duper fast compared to VSCode or typical IDEs.
 
-```bash
+Almost all plugins are lazy loaded, meaning they load only when used, not on startup.
+So having many plugins is not really that big of a deal imo.
+
+```
 - folke/lazy.nvim
 - nvchad/base46
 - nvchad/ui
@@ -95,10 +118,9 @@ Startup time is still under 1 second (`~23 milliseconds`), so it's still super d
 - nvim-lua/plenary.nvim
 ```
 
-## LSP's and Treesitters:
+### Tree-sitter Parsers
 
-```bash
-# treesitter
+```
 - luadoc
 - printf
 - vim
@@ -134,7 +156,11 @@ Startup time is still under 1 second (`~23 milliseconds`), so it's still super d
 - gitattributes
 - regex
 
-# LSP's
+```
+
+### LSP Servers
+
+```
 - html
 - cssls
 - jsonls
@@ -156,5 +182,4 @@ Startup time is still under 1 second (`~23 milliseconds`), so it's still super d
 - hyprls
 - clangd
 - asm_lsp
-}
 ```
