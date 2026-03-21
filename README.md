@@ -59,6 +59,7 @@ Startup time is still under 1 second (`~23 milliseconds`), so it's still super d
 - mfussenegger/nvim-lint
 - stevearc/conform.nvim
 - nvim-treesitter/nvim-treesitter
+- chentoast/marks.nvim
 - hrsh7th/nvim-cmp
 - L3MON4D3/LuaSnip
 - hrsh7th/cmp-nvim-lsp
