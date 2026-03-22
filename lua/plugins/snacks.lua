@@ -13,6 +13,8 @@ return {
     --     easing = "outCubic",
     --   },
     -- },
+    --
+    bigfile = {},
 
     notifier = {
       enabled = false,
