@@ -76,7 +76,7 @@ map({ "n", "t" }, "<A-s>", function()
   require("nvchad.term").toggle({
     pos = "sp",
     id = "horizontal_term",
-    size = 0.6,
+    size = 0.5,
   })
 end, { desc = "Toggle Horizontal Terminal" })
 
