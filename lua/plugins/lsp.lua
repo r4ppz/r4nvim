@@ -1,4 +1,4 @@
-local servers = {
+local server_list = {
   -- FRONTEND
   "html",
   "cssls",
@@ -58,7 +58,7 @@ return {
     {
       "mason-org/mason-lspconfig.nvim",
       opts = {
-        ensure_installed = servers,
+        ensure_installed = server_list,
         automatic_enable = false,
       },
     },
@@ -133,7 +133,7 @@ return {
       server_configs.setup(capabilities)
 
       -- Enable all listed servers
-      for _, s in ipairs(servers) do
+      for _, s in ipairs(server_list) do
         vim.lsp.enable(s)
       end
     end

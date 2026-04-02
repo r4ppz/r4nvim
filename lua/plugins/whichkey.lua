@@ -37,13 +37,21 @@ return {
         spacing = 4,
         align = "center",
       },
+
+      plugins = {
+        presets = {
+          windows = false,
+        },
+      },
+
       sort = { "local", "group", "alphanum" },
       show_help = false,
       show_keys = false,
     }
   end,
 
-  -- keys = {
-  --   { "<leader>ow", "<cmd>WhichKey<CR>", desc = "whichkey all keymaps" },
-  -- },
+  keys = {
+    { "<leader>oW", "<cmd>WhichKey<CR>", desc = "whichkey all keymaps" },
+    { "<c-w>", hidden = true },
+  },
 }

@@ -107,7 +107,6 @@ _UI powered by [NvChad](https://nvchad.com/)_
 - folke/which-key.nvim
 - nvim-tree/nvim-web-devicons
 - chrishrb/gx.nvim
-- NStefan002/screenkey.nvim
 - folke/todo-comments.nvim
 - nvim-lua/plenary.nvim
 ```
@@ -159,12 +158,12 @@ Defined in [treesitter.lua](lua/plugins/treesitter.lua)
 - regex
 ```
 
-### LSP Servers
+### [LSP](https://microsoft.github.io/language-server-protocol/) Servers
 
 Language-aware backends that provide references, go-to-definition, diagnostics, autocomplete,
-and most of what makes the editor feel like an IDE via the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/).
+and most of what makes the editor feel like an IDE.
 
-Configured in [lsp.lua](lua/plugins/lsp.lua) and [servers.lua](lua/configs/servers.lua).
+Configured in [lsp.lua](lua/plugins/lsp.lua) and [servers/](lua/configs/servers/).
 
 ```
 - html

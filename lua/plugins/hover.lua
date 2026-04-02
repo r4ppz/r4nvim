@@ -3,7 +3,13 @@ return {
   event = "LspAttach",
   config = function()
     require("hover").setup({
-      providers = { "configs.provider" },
+      providers = {
+        "configs.providers.hover",
+        "hover.providers.dictionary",
+        "hover.providers.diagnostic",
+        "hover.providers.dap",
+        "hover.providers.man",
+      },
       title = false,
       preview_opts = {
         border = "single",
@@ -23,7 +29,7 @@ return {
 
     -- double-tap detection
     local last = 0
-    map("n", "<S-k>", function()
+    map("n", "K", function()
       local now = vim.loop.now()
       if now - last < 300 then
         hover.enter()
@@ -42,5 +48,13 @@ return {
       end
       last = now
     end, { desc = "Hover (double tap enters docs)" })
+
+    map("n", "<C-S-Left>", function()
+      require("hover").switch("previous")
+    end, { desc = "hover.nvim (previous source)" })
+
+    map("n", "<S-C-Right>", function()
+      require("hover").switch("next")
+    end, { desc = "hover.nvim (next source)" })
   end,
 }

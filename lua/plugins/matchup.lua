@@ -35,6 +35,6 @@ return {
     })
 
     local map = require("utils.map")
-    map({ "n", "x", "o", "v" }, "~", "<Plug>(matchup-%)", { desc = "Jump to matching pair" })
+    map({ "n", "v" }, "~", "<Plug>(matchup-%)", { desc = "Jump to matching pair" })
   end,
 }

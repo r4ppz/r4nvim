@@ -26,6 +26,7 @@ M.ui = {
   cmp = {
     icons = true,
     style = "default",
+    abbr_maxwidth = 30,
   },
 
   telescope = {

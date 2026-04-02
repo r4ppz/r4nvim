@@ -2,7 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   branch = "main",
   lazy = false,
-  build = function()
+  config = function()
     local languages = {
       "luadoc",
       "printf",
@@ -47,9 +47,9 @@ return {
       "gitattributes",
       "regex",
     }
+
     require("nvim-treesitter").install(languages)
-  end,
-  config = function()
+
     -- Enable highlighting automatically for all buffers where a parser exists
     vim.api.nvim_create_autocmd("FileType", {
       group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true }),
