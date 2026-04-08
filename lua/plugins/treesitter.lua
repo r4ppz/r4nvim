@@ -12,6 +12,18 @@ return {
       "latex",
       "markdown_inline",
       "query",
+      "ini",
+      "udev",
+      "ssh_config",
+      "tmux",
+
+      "diff",
+      "git_config",
+      "gitcommit",
+      "git_rebase",
+      "gitignore",
+      "gitattributes",
+      "regex",
 
       "sql",
       "lua",
@@ -38,14 +50,6 @@ return {
       "javascript",
       "typescript",
       "tsx",
-
-      "diff",
-      "git_config",
-      "gitcommit",
-      "git_rebase",
-      "gitignore",
-      "gitattributes",
-      "regex",
     }
 
     require("nvim-treesitter").install(languages)

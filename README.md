@@ -126,6 +126,17 @@ Defined in [treesitter.lua](lua/plugins/treesitter.lua)
 - latex
 - markdown_inline
 - query
+- ini
+- udev
+- ssh_config
+- tmux
+- diff
+- git_config
+- gitcommit
+- git_rebase
+- gitignore
+- gitattributes
+- regex
 - sql
 - lua
 - bash
@@ -149,13 +160,6 @@ Defined in [treesitter.lua](lua/plugins/treesitter.lua)
 - javascript
 - typescript
 - tsx
-- diff
-- git_config
-- gitcommit
-- git_rebase
-- gitignore
-- gitattributes
-- regex
 ```
 
 ### [LSP](https://microsoft.github.io/language-server-protocol/) Servers
