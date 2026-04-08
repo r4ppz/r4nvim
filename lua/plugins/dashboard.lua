@@ -43,6 +43,7 @@ end
 return {
   "nvimdev/dashboard-nvim",
   lazy = false,
+  enabled = true,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     require("dashboard").setup({

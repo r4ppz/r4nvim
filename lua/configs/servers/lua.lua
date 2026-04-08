@@ -32,6 +32,7 @@ function M.setup(capabilities)
           library = make_lua_library(),
           maxPreload = 1000,
           preloadFileSize = 1000,
+          checkThirdParty = false,
         },
         telemetry = { enable = false },
       },

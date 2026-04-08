@@ -1,14 +1,6 @@
 local mygroup = vim.api.nvim_create_augroup("MyPersonalConfig", { clear = true })
 local autocmd = vim.api.nvim_create_autocmd
 
-autocmd("FileType", {
-  pattern = "man",
-  callback = function()
-    vim.opt_local.wrap = true
-    vim.keymap.set("n", "<C-S-Up>", "K", { buffer = true })
-  end,
-})
-
 autocmd("BufReadPost", {
   group = mygroup,
   pattern = { "*.png", "*.jpg", "*.jpeg", "*.webp", "*.gif", "*.bmp", "*.svg" },

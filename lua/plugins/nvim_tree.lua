@@ -76,7 +76,18 @@ return {
   end,
 
   keys = {
-    { "<M-e>", "<cmd>NvimTreeToggle<CR>", desc = "Toggle NvimTree " },
+    {
+      "<M-e>",
+      function()
+        require("utils.window").close_other_panels_and_toggle(
+          function()
+            vim.cmd("NvimTreeToggle")
+          end,
+          "NvimTree"
+        )
+      end,
+      desc = "Toggle NvimTree",
+    },
     {
       "<leader>a",
       function()

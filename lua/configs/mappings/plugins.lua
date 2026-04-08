@@ -108,14 +108,18 @@ map("n", "<leader>ui", "<cmd>MasonInstallAll<cr>", { desc = "Mason Install ALl" 
 -- TERMINAL MANAGEMENT
 
 map({ "n", "t" }, "<A-w>", function()
-  window.toggle_terminal({
+  local config = {
     pos = "float",
     id = "float_term",
-  })
+  }
+
+  window.focus_main_window()
+  require("nvchad.term").toggle(config)
+  window.map_close_terminal(config)
 end, { desc = "Toggle Floating Terminal" })
 
 map({ "n", "t" }, "<M-b>", function()
-  window.toggle_terminal({
+  local config = {
     pos = "float",
     id = "btop_float",
     float_opts = {
@@ -126,8 +130,14 @@ map({ "n", "t" }, "<M-b>", function()
       border = "single",
     },
     cmd = "btop",
-  })
-  window.map_close_terminal("btop_float")
+  }
+
+  window.close_other_panels_and_toggle(function()
+    window.focus_main_window()
+    require("nvchad.term").toggle(config)
+  end, "NvTerm_float")
+
+  window.map_close_terminal(config, "q")
 end, { desc = "Toggle Btop" })
 
 -- Docker floating terminal
@@ -145,7 +155,7 @@ map({ "n", "t" }, "<M-S-d>", function()
     return
   end
 
-  window.toggle_terminal({
+  local config = {
     pos = "float",
     id = "lazydocker_float",
     float_opts = {
@@ -156,24 +166,41 @@ map({ "n", "t" }, "<M-S-d>", function()
       border = "single",
     },
     cmd = "lazydocker",
-  })
-  window.map_close_terminal("lazydocker_float")
+  }
+
+  window.focus_main_window()
+  require("nvchad.term").toggle(config)
+  window.map_close_terminal(config, "q")
 end, { desc = "Toggle LazyDocker" })
 
 map({ "n", "t" }, "<A-s>", function()
-  window.toggle_terminal({
+  local config = {
     pos = "sp",
     id = "horizontal_term",
     size = 0.5,
-  })
+  }
+
+  window.close_other_panels_and_toggle(function()
+    window.focus_main_window()
+    require("nvchad.term").toggle(config)
+  end, "NvTerm_sp")
+
+  window.map_close_terminal(config, "<M-c>")
 end, { desc = "Toggle Horizontal Terminal" })
 
 map({ "n", "t" }, "<A-v>", function()
-  window.toggle_terminal({
+  local config = {
     pos = "vsp",
     id = "vertical_term",
     size = 0.5,
-  })
+  }
+
+  window.close_other_panels_and_toggle(function()
+    window.focus_main_window()
+    require("nvchad.term").toggle(config)
+  end, "NvTerm_vsp")
+
+  window.map_close_terminal(config, "<M-c>")
 end, { desc = "Toggle Vertical Terminal" })
 
 map("n", "<A-t>", function()

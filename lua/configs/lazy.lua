@@ -2,6 +2,12 @@ return {
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },
 
+  dev = {
+    path = "/home/r4ppz/Repositories/nvim-plug/",
+    patterns = {},
+    fallback = false,
+  },
+
   ui = {
     border = "single",
     size = {

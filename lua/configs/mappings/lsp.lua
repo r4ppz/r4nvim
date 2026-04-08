@@ -7,35 +7,11 @@ local map = vim.keymap.set
 
 map("n", "<leader>Lr", "<cmd>LspRestart<cr>", { desc = "Restart LSP" })
 map("n", "<leader>Li", "<cmd>LspInfo<cr>", { desc = "LSP Info" })
+map("n", "<leader>Ls", "<cmd>LspStop<cr>", { desc = "LSP Stop" })
 
 map("n", "gR", "<cmd>Lspsaga finder ref+def+imp<CR>", {
   desc = "Find References (including def and imp)",
 })
-
--- map("n", "gr", "<cmd>Lspsaga finder<CR>", {
---   desc = "Find References",
--- })
-
--- map("n", "gr", function()
---   Snacks.picker.lsp_references({
---     auto_confirm = false,
---     title = "References",
---     layout = {
---       preview = "main",
---       layout = {
---         backdrop = false,
---         width = 40,
---         min_width = 40,
---         height = 0,
---         position = "right",
---         border = "none",
---         box = "vertical",
---         { win = "list", border = "none" },
---         { win = "preview", title = "{preview}", height = 0.4, border = "top" },
---       },
---     },
---   })
--- end, { desc = "LSP References (Snacks)" })
 
 map("n", "gr", function()
   Snacks.picker.lsp_references({
@@ -164,4 +140,10 @@ end, {
   desc = "Outgoing Calls",
 })
 
-map("n", "<leader>ls", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
+map("n", "<leader>ls", function()
+  local window = require("utils.window")
+
+  window.close_other_panels_and_toggle(function()
+    require("outline").toggle()
+  end, "Outline")
+end, { desc = "Toggle Outline" })

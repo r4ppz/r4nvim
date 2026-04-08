@@ -1,3 +1,28 @@
+local win_util = require("utils.window")
+
+local exclude_filetypes = {
+  "NvimTree",
+  "markdown",
+  "gitcommit",
+  "diff",
+  "Lazy",
+  "mason",
+  "spectre_panel",
+  "copilot-chat",
+  "snacks_picker_input",
+  "snacks_picker_preview",
+  "snacks_picker_list",
+  "snacks_dashboard",
+}
+
+local function has_valid_source(buf)
+  return pcall(vim.treesitter.get_parser, buf)
+    or not vim.tbl_isempty(vim.lsp.get_clients({
+      bufnr = buf,
+      method = "textDocument/documentSymbol",
+    }))
+end
+
 return {
   "Bekaboo/dropbar.nvim",
   event = "BufReadPost",
@@ -6,45 +31,10 @@ return {
       truncate = false,
       padding = { left = 2, right = 5 },
       enable = function(buf, win, _)
-        if
-          not vim.api.nvim_buf_is_valid(buf)
-          or not vim.api.nvim_win_is_valid(win)
-          or vim.fn.win_gettype(win) ~= ""
-          or vim.bo[buf].buftype ~= ""
-          or vim.wo[win].diff
-        then
-          return false
-        end
-
-        local win_config = vim.api.nvim_win_get_config(win)
-        if win_config.relative ~= "" or win_config.external then
-          return false
-        end
-
-        local ignored_filetypes = {
-          "gitcommit",
-          "diff",
-          "Lazy",
-          "mason",
-          "copilot-chat",
-          "snacks_picker_input",
-          "snacks_picker_preview",
-          "snacks_picker_list",
-          "snacks_dashboard",
-          "spectre_panel",
-        }
-
-        if vim.tbl_contains(ignored_filetypes, vim.bo[buf].ft) then
-          return false
-        end
-
-        -- Only render if there is a source available
-        return vim.bo[buf].ft == "markdown"
-          or pcall(vim.treesitter.get_parser, buf)
-          or not vim.tbl_isempty(vim.lsp.get_clients({
-            bufnr = buf,
-            method = "textDocument/documentSymbol",
-          }))
+        return not win_util.is_ft_excluded(buf, exclude_filetypes)
+          and win_util.is_buf_win_valid(buf, win)
+          and win_util.is_win_standard(win)
+          and has_valid_source(buf)
       end,
     },
     icons = {

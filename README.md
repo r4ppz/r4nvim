@@ -1,5 +1,7 @@
 # My Personal Neovim Configuration
 
+_UI powered by [NvChad](https://nvchad.com/)_
+
 <img src="img/startup.png" >
 
 <img src="img/highlight1.png" >
@@ -34,7 +36,7 @@ Tmux/Hyprland/Waybar config can be found in this repo: [Arch-dotfiles](https://g
 
 ### Install & Use:
 
-> I don't use Windows so this will probably not work well in there.
+> Only works on Linux (I think)
 
 ```bash
 # Install & run
@@ -57,8 +59,6 @@ Startup time is still under 1 second (`~23 milliseconds`), so it's super duper f
 
 Almost all plugins are lazy loaded, meaning they load only when used, not on startup.
 So having many plugins is not really that big of a deal.
-
-_UI powered by [NvChad](https://nvchad.com/)_
 
 ```
 - folke/lazy.nvim

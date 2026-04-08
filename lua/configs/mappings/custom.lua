@@ -4,21 +4,6 @@ local map = vim.keymap.set
 -- Personal?!
 --------------------------------------------------------
 
-map({ "n", "v" }, "<leader>ob", "<cmd>BufInfo<CR>", {
-  desc = "Get BufInfo",
-})
-map("n", "<leader>ow", function()
-  vim.wo.wrap = not vim.wo.wrap
-end, { desc = "Toggle line wrapping" })
-
-map("n", "<C-W>q", function()
-  if vim.fn.winnr("$") > 1 then
-    vim.cmd("q")
-  else
-    vim.notify("Cannot close the last window", vim.log.levels.WARN)
-  end
-end, { desc = "Close window safely" })
-
 map("n", "<C-A-Up>", ":m .-2<CR>==<C-l>", { desc = "Move line up" })
 map("n", "<C-A-Down>", ":m .+1<CR>==<C-l>", { desc = "Move line down" })
 map("v", "<C-A-Up>", ":m '<-2<CR>gv=gv<C-l>", { desc = "Move selection up" })
@@ -83,12 +68,21 @@ map("t", "<C-q>", "<C-\\><C-N>", { desc = "Escape terminal mode" })
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
+-- Jump last and first char of the line
 map({ "n", "v" }, "!", "^", { desc = "Jump to first non-blank character of the line" })
 map({ "n", "v" }, "@", "g_", { desc = "Jump to last non-blank character of line" })
 
---------------------------------------------------
+-- Others
+map({ "n", "v" }, "<leader>ob", "<cmd>BufInfo<CR>", { desc = "Get BufInfo" })
+map({ "n", "v" }, "<leader>oc", "<CMD>OpenConfig<CR>", { desc = "Open Neovim Config" })
+
+map("n", "<leader>ow", function()
+  vim.wo.wrap = not vim.wo.wrap
+end, { desc = "Toggle line wrapping" })
+
+--------------------------------------------------------
 -- Disabled/Change defaults cause why not
---------------------------------------------------
+--------------------------------------------------------
 map("n", "<C-r>", "<nop>", { desc = "Disable redo" })
 map("n", "u", "<nop>", { desc = "Disable undo" })
 
@@ -123,7 +117,7 @@ map(
   { desc = "Highlight selection (no jump, case-insensitive)" }
 )
 
---------------------------------------------------
+--------------------------------------------------------
 -- Tabs
 map("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "New tab" })
 map("n", "<leader>tQ", "<cmd>tabonly<CR>", { desc = "Close all other tabs" })
@@ -138,7 +132,7 @@ map("n", "<leader>t<Left>", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
 map("n", "]t", "<cmd>tabnext<CR>", { desc = "Next tab" })
 map("n", "[t", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
 
---------------------------------------------------
+--------------------------------------------------------
 
 -- Window related stuff
 map({ "n", "v" }, "<C-w><S-Left>", function()
@@ -158,3 +152,12 @@ map({ "n", "v" }, "<S-M-Down>", ":resize +2<CR>", { desc = "Increase window heig
 map({ "n", "v" }, "<S-M-Up>", ":resize -2<CR>", { desc = "Decrease window height" })
 map({ "n", "v" }, "<S-M-Right>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
 map({ "n", "v" }, "<S-M-Left>", ":vertical resize +2<CR>", { desc = "Increase window width" })
+
+-- Safe guard
+map("n", "<C-W>q", function()
+  if vim.fn.winnr("$") > 1 then
+    vim.cmd("q")
+  else
+    vim.notify("Cannot close the last window", vim.log.levels.WARN)
+  end
+end, { desc = "Close window safely" })

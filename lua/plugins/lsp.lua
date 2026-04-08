@@ -1,37 +1,4 @@
-local server_list = {
-  -- FRONTEND
-  "html",
-  "cssls",
-  "jsonls",
-  "yamlls",
-  -- "markdown_oxide",
-  "marksman",
-  "eslint",
-  -- "ts_ls",
-  -- "vtsls",
-  -- "biome",
-  -- "tsgo",
-  "cssmodules_ls",
-  "css_variables",
-  -- "emmet_ls",
-
-  -- BACKEND
-  "jdtls",
-  "docker_language_server",
-  "dockerls",
-  "lemminx",
-  "postgres_lsp",
-  "gopls",
-
-  "taplo",
-  "lua_ls",
-  "pyright",
-  "bashls",
-  "rust_analyzer",
-  "hyprls",
-  "clangd",
-  "asm_lsp",
-}
+local servers = require("configs.servers.servers")
 
 return {
   "neovim/nvim-lspconfig",
@@ -58,7 +25,7 @@ return {
     {
       "mason-org/mason-lspconfig.nvim",
       opts = {
-        ensure_installed = server_list,
+        ensure_installed = servers.server_list,
         automatic_enable = false,
       },
     },
@@ -93,7 +60,6 @@ return {
   },
 
   config = function()
-    local server_configs = require("configs.servers")
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.textDocument.completion.completionItem =
       vim.tbl_deep_extend("force", capabilities.textDocument.completion.completionItem or {}, {
@@ -130,10 +96,10 @@ return {
       })
 
       -- Server-specific configurations
-      server_configs.setup(capabilities)
+      servers.setup(capabilities)
 
       -- Enable all listed servers
-      for _, s in ipairs(server_list) do
+      for _, s in ipairs(servers.server_list) do
         vim.lsp.enable(s)
       end
     end

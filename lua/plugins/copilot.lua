@@ -56,12 +56,25 @@ return {
     { "<leader>ci", "<cmd>CopilotChatIdiomatic<cr>", mode = { "n", "v" }, desc = "Check if code is idiomatic" },
     { "<leader>ce", "<cmd>CopilotChatExplain<cr>", mode = { "n", "v" }, desc = "Explain code" },
     { "<leader>cs", "<cmd>CopilotChatSuggest<cr>", mode = { "n", "v" }, desc = "Suggest alternatives" },
-    { "<M-c>", "<cmd>CopilotChatToggle<cr>", mode = { "n", "v" }, desc = "Toggle CopilotChat" },
     { "<leader>cm", "<cmd>CopilotChatModels<cr>", mode = { "n", "v" }, desc = "View/select available models" },
+    {
+      "<M-c>",
+      function()
+        require("utils.window").close_other_panels_and_toggle(
+          function()
+            require("CopilotChat").toggle()
+          end,
+          "copilot-chat"
+        )
+      end,
+      mode = { "n", "v" },
+      desc = "Toggle CopilotChat",
+    },
 
     {
       "<leader>cp",
       function()
+        require("utils.window").close_existing_side_panels_first()
         local chat = require("CopilotChat")
         chat.open()
         chat.select_prompt()
@@ -74,6 +87,7 @@ return {
     {
       "<leader>cc",
       function()
+        require("utils.window").close_existing_side_panels_first()
         local chat = require("CopilotChat")
         chat.open()
         chat.chat:add_message({ role = "user", content = "#buffer:active\n" })
@@ -85,6 +99,7 @@ return {
     {
       "<leader>ca",
       function()
+        require("utils.window").close_existing_side_panels_first()
         local chat = require("CopilotChat")
         chat.open()
         chat.chat:add_message({ role = "user", content = "#buffer:listed\n" })
@@ -96,6 +111,7 @@ return {
     {
       "<leader>cf",
       function()
+        require("utils.window").close_existing_side_panels_first()
         local snacks = require("snacks")
         snacks.picker.files({
           confirm = function(picker, item)
@@ -129,6 +145,7 @@ return {
     {
       "<C-S-M-Up>",
       function()
+        require("utils.window").close_existing_side_panels_first()
         local params = vim.lsp.util.make_position_params(nil, "utf-16")
         local responses = vim.lsp.buf_request_sync(0, "textDocument/hover", params, 500)
         if not responses or vim.tbl_isempty(responses) then

@@ -5,10 +5,6 @@ return {
     require("hover").setup({
       providers = {
         "configs.providers.hover",
-        "hover.providers.dictionary",
-        "hover.providers.diagnostic",
-        "hover.providers.dap",
-        "hover.providers.man",
       },
       title = false,
       preview_opts = {
@@ -29,7 +25,7 @@ return {
 
     -- double-tap detection
     local last = 0
-    map("n", "K", function()
+    local function hover_handler()
       local now = vim.loop.now()
       if now - last < 300 then
         hover.enter()
@@ -37,24 +33,13 @@ return {
         hover.open()
       end
       last = now
-    end, { desc = "Hover (double tap enters docs)" })
+    end
 
-    map("n", "<S-C-Up>", function()
-      local now = vim.loop.now()
-      if now - last < 300 then
-        hover.enter()
-      else
-        hover.open()
-      end
-      last = now
-    end, { desc = "Hover (double tap enters docs)" })
-
-    map("n", "<C-S-Left>", function()
-      require("hover").switch("previous")
-    end, { desc = "hover.nvim (previous source)" })
-
-    map("n", "<S-C-Right>", function()
-      require("hover").switch("next")
-    end, { desc = "hover.nvim (next source)" })
+    map("n", "K", hover_handler, {
+      desc = "Hover (double tap enters docs)",
+    })
+    map("n", "<S-C-Up>", hover_handler, {
+      desc = "Hover (double tap enters docs)",
+    })
   end,
 }
