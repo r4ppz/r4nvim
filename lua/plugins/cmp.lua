@@ -50,7 +50,7 @@ return {
     { "https://codeberg.org/FelipeLema/cmp-async-path.git", event = "InsertEnter" },
   },
 
-  opts = function()
+  config = function()
     local nv_cmp = require("nvchad.cmp")
     local cmp = require("cmp")
 
@@ -62,6 +62,15 @@ return {
     }
 
     local options = {
+      enabled = function()
+        -- Disable in prompt buffers
+        if vim.bo.buftype == "prompt" then
+          return false
+        end
+
+        return not disabled_ft[vim.bo.filetype]
+      end,
+
       formatting = nv_cmp.formatting,
       window = vim.tbl_deep_extend("force", nv_cmp.window, {
         documentation = {
@@ -86,10 +95,6 @@ return {
       completion = {
         completeopt = "menu,menuone,noselect",
       },
-
-      enabled = function()
-        return not disabled_ft[vim.bo.filetype]
-      end,
 
       snippet = {
         expand = function(args)
