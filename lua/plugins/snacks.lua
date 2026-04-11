@@ -31,8 +31,33 @@ return {
     },
   },
   keys = {
+    -- Trying out fff.nvim
+    -- {
+    --   "<M-f>",
+    --   function()
+    --     Snacks.picker.files()
+    --   end,
+    --   desc = "Find Files (Snacks)",
+    -- },
+
+    -- {
+    --   "<leader>ff",
+    --   function()
+    --     Snacks.picker.smart()
+    --   end,
+    --   desc = "Smart Find Files (Snacks)",
+    -- },
+
+    -- {
+    --   "<leader>fg",
+    --   function()
+    --     Snacks.picker.grep()
+    --   end,
+    --   desc = "Grep (Snacks)",
+    -- },
+
     {
-      "<leader>Fc",
+      "<leader>fc",
       function()
         Snacks.picker.colorschemes()
       end,
@@ -45,30 +70,6 @@ return {
         Snacks.picker.files({ dirs = { os.getenv("HOME") } })
       end,
       desc = "Fuzzy Find from Home (Snacks)",
-    },
-
-    {
-      "<M-f>",
-      function()
-        Snacks.picker.files()
-      end,
-      desc = "Find Files (Snacks)",
-    },
-
-    {
-      "<leader>ff",
-      function()
-        Snacks.picker.smart()
-      end,
-      desc = "Smart Find Files (Snacks)",
-    },
-
-    {
-      "<leader>fg",
-      function()
-        Snacks.picker.grep()
-      end,
-      desc = "Grep (Snacks)",
     },
 
     {
@@ -126,7 +127,7 @@ return {
       function()
         Snacks.picker.marks()
       end,
-      desc = "Marks",
+      desc = "Marks (Snacks)",
     },
 
     {
