@@ -34,7 +34,7 @@ Tmux/Hyprland/Waybar config can be found in this repo: [Arch-dotfiles](https://g
 
 ---
 
-### Install & Use:
+## Install & Use:
 
 > Only works on Linux (I think)
 
@@ -122,7 +122,7 @@ So having many plugins is not really that big of a deal.
 - nvim-lua/plenary.nvim
 ```
 
-### Tree-sitter Parsers
+## Tree-sitter Parsers
 
 Parsers that understand code structure, mainly used for syntax highlighting, text objects, folding, and other syntax-aware features.
 
@@ -173,7 +173,7 @@ Defined in [treesitter.lua](lua/plugins/treesitter.lua)
 - tsx
 ```
 
-### [LSP](https://microsoft.github.io/language-server-protocol/) Servers
+## [LSP](https://microsoft.github.io/language-server-protocol/) Servers
 
 Language-aware backends that provide references, go-to-definition, diagnostics, autocomplete,
 and most of what makes the editor feel like an IDE.

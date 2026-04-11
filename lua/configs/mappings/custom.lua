@@ -127,14 +127,26 @@ map("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "New tab" })
 map("n", "<leader>tQ", "<cmd>tabonly<CR>", { desc = "Close all other tabs" })
 map("n", "<leader>tq", "<cmd>tabclose<CR>", { desc = "Close tab" })
 
-map("n", "<Tab>", "<cmd>tabnext<CR>", { desc = "Next tab" })
-map("n", "<S-Tab>", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
-
 map("n", "<leader>t<Right>", "<cmd>tabnext<CR>", { desc = "Next tab" })
 map("n", "<leader>t<Left>", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
 
 map("n", "]t", "<cmd>tabnext<CR>", { desc = "Next tab" })
 map("n", "[t", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
+
+local function smart_tab(forward)
+  if vim.v.hlsearch == 1 and vim.fn.getreg("/") ~= "" then
+    return forward and "n" or "N"
+  else
+    return forward and "<cmd>tabnext<CR>" or "<cmd>tabprevious<CR>"
+  end
+end
+
+map("n", "<Tab>", function()
+  return smart_tab(true)
+end, { expr = true, desc = "Next search match or Next Tab" })
+map("n", "<S-Tab>", function()
+  return smart_tab(false)
+end, { expr = true, desc = "Prev search match or Prev Tab" })
 
 --------------------------------------------------------
 
