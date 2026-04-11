@@ -27,8 +27,8 @@ _UI powered by [NvChad](https://nvchad.com/)_
 
 This repository is meant as a reference for me (for you too, to get inspiration maybe?) and to document my config.
 
-[Keybinds](lua/configs/mappings/) are heavily configured and personalized. Many arrow-keys, alt-keys, and non-defaults are used.
-This is to maintain consistency and compatibility with my compositor/WM, Shell, GUI programs, Tmux workflow, etc.
+[Keybinds](lua/configs/mappings/) are heavily configured and personalized. Many arrow-keys, Alt keys, and non-defaults are used.
+This is to maintain consistency and compatibility with my compositor/WM, shell, terminal emulator, tmux, TUI apps, etc.
 
 Tmux/Hyprland/Waybar config can be found in this repo: [Arch-dotfiles](https://github.com/r4ppz/Arch-dotfiles)
 

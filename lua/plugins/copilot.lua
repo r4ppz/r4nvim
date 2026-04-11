@@ -97,7 +97,7 @@ return {
 
     -- Open chat with current buffer
     {
-      "<leader>cc",
+      "<leader>cb",
       function()
         require("utils.window").close_existing_side_panels_first()
         local chat = require("CopilotChat")
@@ -109,7 +109,7 @@ return {
     },
 
     {
-      "<leader>ca",
+      "<leader>cB",
       function()
         require("utils.window").close_existing_side_panels_first()
         local chat = require("CopilotChat")

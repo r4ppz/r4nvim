@@ -22,6 +22,24 @@ return {
     })
 
     return {
+      plugins = {
+        marks = false,
+        registers = false,
+        spelling = {
+          enabled = true,
+          suggestions = 20,
+        },
+        presets = {
+          operators = true,
+          motions = true,
+          text_objects = true,
+          windows = false,
+          nav = true,
+          z = true,
+          g = true,
+        },
+      },
+
       preset = "helix",
       icons = {
         group = "",
@@ -36,12 +54,6 @@ return {
         width = { min = 25, max = 50 },
         spacing = 4,
         align = "center",
-      },
-
-      plugins = {
-        presets = {
-          windows = false,
-        },
       },
 
       sort = { "local", "group", "alphanum" },

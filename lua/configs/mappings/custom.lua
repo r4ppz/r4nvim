@@ -1,7 +1,20 @@
 local map = vim.keymap.set
 
 --------------------------------------------------------
--- Personal?!
+-- Personal?!!
+
+-- Major changes:
+-- y = yank only
+-- d = delete only
+-- x = cut only
+-- C-a = undo
+-- C-d = redo
+-- M-down = insert below
+-- M-up = insert above
+-- Tab/S-Tab: N/n if search active, else switch tabs
+--
+-- No macros (its annoying)
+-- alot...
 --------------------------------------------------------
 
 map("n", "<C-A-Up>", ":m .-2<CR>==<C-l>", { desc = "Move line up" })
@@ -12,6 +25,7 @@ map("i", "<C-A-Up>", "<Esc>:m .-2<CR>==gi<C-o><C-l>", { desc = "Move selection u
 map("i", "<C-A-Down>", "<Esc>:m .+1<CR>==gi<C-o><C-l>", { desc = "Move selection up" })
 
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "Copy whole file" })
+map("n", "<C-a>", "ggVG", { desc = "Select all" })
 
 -- Insert below and above
 map("n", "<M-Up>", "O", { desc = "Insert above" })
@@ -94,17 +108,21 @@ map("n", "<C-z>", "<nop>", { desc = "Disable suspend" })
 map("n", "ZZ", "<nop>", { desc = "Disable accidental save and quit (ZZ)" })
 map("n", "ZQ", "<nop>", { desc = "Disable accidental quit (ZQ)" })
 
-map("n", "s", "<nop>", { desc = "Disable s to avoid accidental edits" })
-map("v", "s", '"_s', { desc = "Substitute without yanking (visual)" })
-map("n", "S", '"_S', { desc = "Substitute line without yanking (normal)" })
+map({ "n", "v" }, "s", '"_s', { desc = "Substitute without yanking (visual)" })
+map({ "n", "v" }, "S", '"_S', { desc = "Substitute line without yanking (normal)" })
 
 map({ "n", "v" }, "q", "<Nop>", { desc = "Disable recording macro (q)" })
 map({ "n", "v" }, "Q", "<Nop>", { desc = "Disable Ex mode (Q)" })
 
 map("v", "p", '"_dP', { desc = "Paste without yanking replaced text" })
-map({ "n", "v" }, "x", '"_x', { desc = "Delete character without yanking" })
-map("n", "c", '"_c', { desc = "Change text without yanking" })
--- keymap.map("n", "d", '"_d', { desc = "Delete text without yanking" })
+map({ "n", "v" }, "c", '"_c', { desc = "Change text without yanking" })
+
+map({ "n", "v" }, "d", '"_d', { desc = "Delete without yanking" })
+map({ "n", "v" }, "D", '"_D', { desc = "Delete to end of line without yanking" })
+
+map("n", "X", "D", { desc = "Cut line" })
+
+-- map("n", "d", '"_d', { desc = "Delete text without yanking" })
 
 -- Highlights the word without jumping to the next occurrence.
 -- Uses case-insensitive search and enables 'hlsearch'.
