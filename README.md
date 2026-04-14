@@ -11,7 +11,7 @@ _UI powered by [NvChad](https://nvchad.com/)_
 ---
 
 <details>
-<summary>Features</summary>
+<summary>Features & more screenshots</summary>
 
 > This is just some of the many features
 
@@ -109,7 +109,54 @@ Build type: RelWithDebInfo
 LuaJIT 2.1.1774896198
 ```
 
-## Plugins used:
+## Languages & File Types Supported/Configured
+
+> See [treesitter.lua](lua/plugins/treesitter.lua), [lsp.lua](lua/plugins/lsp.lua)
+> and [servers/](lua/configs/servers/) for more info
+
+```bash
+# Programming Languages (LSP + Treesitter + Formatter)
+- Lua
+- C
+- C++
+- Java
+- Python
+- Go
+- Rust
+- Assembly
+- TypeScript
+- JavaScript
+- Bash
+- Zsh
+- SQL
+
+# Web & Frontend
+- HTML
+- Astro
+- Svelte
+- CSS / SCSS / Less
+- TSX / JSX
+
+# Config & Data Formats
+- YAML
+- JSON
+- TOML
+- XML
+- Markdown
+- Docker / Docker Compose
+- Hyprland
+
+# Editor & System (Treesitter only)
+- Vim script, Vimdoc, Luadoc, printf, query
+- INI, udev, ssh_config, tmux
+- diff, git_config, gitcommit, git_rebase, gitignore, gitattributes
+- regex, LaTeX
+- More...
+```
+
+---
+
+## Plugins Used:
 
 > it's a lot 😬 though I am still cleaning up and optimizing my workflow.
 
@@ -118,7 +165,7 @@ Startup time is still under 1 second (`~23 milliseconds`), so it's super duper f
 Almost all plugins are lazy loaded, meaning they load only when used, not on startup.
 So having many plugins is not really that big of a deal.
 
-```
+```txt
 - folke/lazy.nvim
 - nvchad/base46
 - nvchad/ui
@@ -167,93 +214,4 @@ So having many plugins is not really that big of a deal.
 - chrishrb/gx.nvim
 - folke/todo-comments.nvim
 - nvim-lua/plenary.nvim
-```
-
-## Languages supported/configured
-
-#### Tree-sitter Parsers
-
-Parsers that understand code structure, mainly used for syntax highlighting, text objects, folding, and other syntax-aware features.
-
-Defined in [treesitter.lua](lua/plugins/treesitter.lua)
-
-```
-- luadoc
-- printf
-- vim
-- vimdoc
-- markdown
-- latex
-- markdown_inline
-- query
-- ini
-- udev
-- ssh_config
-- tmux
-- diff
-- git_config
-- gitcommit
-- git_rebase
-- gitignore
-- gitattributes
-- regex
-- sql
-- lua
-- bash
-- java
-- rust
-- python
-- c
-- asm
-- cpp
-- hyprlang
-- go
-- gomod
-- gowork
-- gosum
-- yaml
-- toml
-- xml
-- json
-- html
-- css
-- javascript
-- typescript
-- tsx
-- astro
-- svelte
-```
-
-#### [LSP](https://microsoft.github.io/language-server-protocol/) Servers
-
-Language-aware backends that provide references, go-to-definition, diagnostics, autocomplete,
-and most of what makes the editor feel like an IDE.
-
-Configured in [lsp.lua](lua/plugins/lsp.lua) and [servers/](lua/configs/servers/servers.lua).
-
-```
-- html
-- cssls
-- jsonls
-- yamlls
-- marksman
-- eslint
-- cssmodules_ls
-- css_variables
-- astro
-- svelte
-- jdtls
-- docker_language_server
-- dockerls
-- lemminx
-- postgres_lsp
-- gopls
-- taplo
-- lua_ls
-- pyright
-- bashls
-- rust_analyzer
-- hyprls
-- clangd
-- asm_lsp
 ```
