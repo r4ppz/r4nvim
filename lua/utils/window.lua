@@ -152,26 +152,20 @@ function M.is_empty_scratch_buf(buf)
 end
 
 --- Determines if a buffer's filetype matches any in the exclusion list.
---- Splits the filetype by dots and checks each part against the list.
 --- @param buf number: The buffer ID to check.
---- @param exclude_filetypes string[]: A list of filetypes to exclude.
+--- @param exclude_filetypes table<string, boolean>: A set of filetypes to exclude.
 --- @return boolean: `true` if the filetype matches any exclusion, `false` otherwise.
 function M.is_ft_excluded(buf, exclude_filetypes)
+  if not vim.api.nvim_buf_is_valid(buf) then
+    return false
+  end
+
   local ft = vim.bo[buf].filetype or ""
-  ft = ft:lower()
   if ft == "" then
     return false
   end
 
-  local parts = vim.split(ft, "%.", { plain = false })
-  for _, part in ipairs(parts) do
-    for _, ex in ipairs(exclude_filetypes) do
-      if part == ex:lower() then
-        return true
-      end
-    end
-  end
-  return false
+  return vim.tbl_contains(exclude_filetypes, ft)
 end
 
 return M

@@ -6,6 +6,7 @@ local EXCLUDED_FILETYPES = {
   "gitcommit",
   "diff",
   "Lazy",
+  "text",
   "mason",
   "spectre_panel",
   "copilot-chat",
@@ -24,17 +25,21 @@ local function is_valid_source(buf)
 end
 
 local function is_enable(buf, win)
-  if win_util.is_empty_scratch_buf(buf) then
-    if win and vim.api.nvim_win_is_valid(win) then
-      vim.wo[win].winbar = ""
-    end
+  if not win_util.is_buf_win_valid(buf, win) or not win_util.is_win_standard(win) then
     return false
   end
 
-  return not win_util.is_ft_excluded(buf, EXCLUDED_FILETYPES)
-    and win_util.is_buf_win_valid(buf, win)
-    and win_util.is_win_standard(win)
-    and is_valid_source(buf)
+  local ft = vim.bo[buf].filetype
+  if ft == "" or ft == "none" or win_util.is_ft_excluded(buf, EXCLUDED_FILETYPES) then
+    return false
+  end
+
+  if win_util.is_empty_scratch_buf(buf) then
+    vim.wo[win].winbar = ""
+    return false
+  end
+
+  return is_valid_source(buf)
 end
 
 return {
