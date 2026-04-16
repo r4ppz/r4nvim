@@ -75,7 +75,7 @@ return {
     {
       "<M-c>",
       function()
-        require("utils.window").close_other_panels_and_toggle(function()
+        require("utils.window").toggle_panel(function()
           require("CopilotChat").toggle()
         end, "copilot-chat")
       end,
@@ -86,7 +86,7 @@ return {
     {
       "<leader>cp",
       function()
-        require("utils.window").close_existing_side_panels_first()
+        require("utils.window").close_panels()
         local chat = require("CopilotChat")
         chat.open()
         chat.select_prompt()
@@ -99,7 +99,7 @@ return {
     {
       "<leader>cb",
       function()
-        require("utils.window").close_existing_side_panels_first()
+        require("utils.window").close_panels()
         local chat = require("CopilotChat")
         chat.open()
         chat.chat:add_message({ role = "user", content = "#buffer:active\n" })
@@ -111,7 +111,7 @@ return {
     {
       "<leader>cB",
       function()
-        require("utils.window").close_existing_side_panels_first()
+        require("utils.window").close_panels()
         local chat = require("CopilotChat")
         chat.open()
         chat.chat:add_message({ role = "user", content = "#buffer:listed\n" })
@@ -123,7 +123,7 @@ return {
     {
       "<leader>cf",
       function()
-        require("utils.window").close_existing_side_panels_first()
+        require("utils.window").close_panels()
         local snacks = require("snacks")
         snacks.picker.files({
           confirm = function(picker, item)
@@ -157,7 +157,7 @@ return {
     {
       "<C-S-M-Up>",
       function()
-        require("utils.window").close_existing_side_panels_first()
+        require("utils.window").close_panels()
         local params = vim.lsp.util.make_position_params(nil, "utf-16")
         local responses = vim.lsp.buf_request_sync(0, "textDocument/hover", params, 500)
         if not responses or vim.tbl_isempty(responses) then

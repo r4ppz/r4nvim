@@ -14,6 +14,7 @@ local EXCLUDED_FILETYPES = {
   "snacks_picker_preview",
   "snacks_picker_list",
   "snacks_dashboard",
+  "none",
 }
 
 local function is_valid_source(buf)
@@ -30,7 +31,7 @@ local function is_enable(buf, win)
   end
 
   local ft = vim.bo[buf].filetype
-  if ft == "" or ft == "none" or win_util.is_ft_excluded(buf, EXCLUDED_FILETYPES) then
+  if ft == "" or win_util.is_ft_excluded(buf, EXCLUDED_FILETYPES) then
     return false
   end
 

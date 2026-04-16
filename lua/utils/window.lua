@@ -19,6 +19,14 @@ local EXCLUDED_FILETYPES = {
   "Outline",
 }
 
+local EXCLUDED_BUFTYPES = {
+  "nofile",
+  "prompt",
+  "help",
+  "quickfix",
+  "terminal",
+}
+
 --- Checks if a given window is a standard window.
 --- A standard window is not relative to another window and is not external.
 --- @param win number: The window ID to check.
@@ -45,6 +53,23 @@ function M.is_ft_excluded(buf, exclude_filetypes)
   return vim.tbl_contains(exclude_filetypes, ft)
 end
 
+--- Determines if a buffer's buftype matches any in the exclusion list.
+--- @param buf number: The buffer ID to check.
+--- @param exclude_buftypes table<string, boolean>: A set of buftypes to exclude.
+--- @return boolean: `true` if the buftype matches any exclusion, `false` otherwise.
+function M.is_bt_excluded(buf, exclude_buftypes)
+  if not vim.api.nvim_buf_is_valid(buf) then
+    return false
+  end
+
+  local bt = vim.bo[buf].buftype or ""
+  if bt == "" then
+    return false
+  end
+
+  return vim.tbl_contains(exclude_buftypes, bt)
+end
+
 --- Checks if a window and its buffer represent a main editing window (not a sidebar, terminal, or special buffer).
 --- @param win number: The window ID to check.
 --- @param buf number: The buffer ID to check.
@@ -54,8 +79,7 @@ function M.is_main_editing_window(win, buf)
     return false
   end
 
-  local bt = vim.bo[buf].buftype
-  if bt == "nofile" or bt == "prompt" or bt == "help" or bt == "quickfix" or bt == "terminal" then
+  if M.is_bt_excluded(buf, EXCLUDED_BUFTYPES) then
     return false
   end
 
@@ -108,18 +132,19 @@ end
 --- If the current window is a sidebar or terminal,
 --- switches to the first standard window.
 function M.focus_main_window()
+  local current_win = vim.api.nvim_get_current_win()
   local current_buf = vim.api.nvim_get_current_buf()
-  local is_sidebar = vim.tbl_contains(EXCLUDED_FILETYPES, vim.bo[current_buf].filetype)
-  local is_term = vim.bo[current_buf].buftype == "terminal"
 
-  if is_sidebar or is_term then
-    local wins = vim.api.nvim_tabpage_list_wins(0)
-    for _, w in ipairs(wins) do
-      local b = vim.api.nvim_win_get_buf(w)
-      if M.is_main_editing_window(w, b) then
-        vim.api.nvim_set_current_win(w)
-        return
-      end
+  if M.is_main_editing_window(current_win, current_buf) then
+    return
+  end
+
+  local wins = vim.api.nvim_tabpage_list_wins(0)
+  for _, w in ipairs(wins) do
+    local b = vim.api.nvim_win_get_buf(w)
+    if M.is_main_editing_window(w, b) then
+      vim.api.nvim_set_current_win(w)
+      return
     end
   end
 end
@@ -128,18 +153,13 @@ end
 --- This function iterates through all windows in the current tabpage and checks
 --- if their filetype matches any in the predefined `side_panel_fts` list. If a
 --- match is found, the window is forcefully closed.
-function M.close_existing_side_panels_first()
+function M.close_panels()
   local wins = vim.api.nvim_tabpage_list_wins(0)
   for _, win in ipairs(wins) do
     local buf = vim.api.nvim_win_get_buf(win)
-    local ft = vim.bo[buf].filetype
 
-    -- Check if the window's filetype is in our restricted list
-    for _, panel_ft in ipairs(SIDE_PANEL_FTS) do
-      if ft == panel_ft then
-        vim.api.nvim_win_close(win, true)
-        break
-      end
+    if M.is_ft_excluded(buf, SIDE_PANEL_FTS) then
+      vim.api.nvim_win_close(win, true)
     end
   end
 end
@@ -147,7 +167,7 @@ end
 --- Closes other side panels (if target is not already open) then runs the toggle.
 --- @param toggle_fn function: The toggle function to run.
 --- @param panel_ft string: The filetype of the panel this toggle opens (e.g. "copilot-chat", "Outline").
-function M.close_other_panels_and_toggle(toggle_fn, panel_ft)
+function M.toggle_panel(toggle_fn, panel_ft)
   -- Check if this panel is already open
   local already_open = false
   local wins = vim.api.nvim_tabpage_list_wins(0)
@@ -161,7 +181,7 @@ function M.close_other_panels_and_toggle(toggle_fn, panel_ft)
 
   -- Only close other side panels when opening, not when closing
   if not already_open then
-    M.close_existing_side_panels_first()
+    M.close_panels()
   end
 
   toggle_fn()

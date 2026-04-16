@@ -139,9 +139,7 @@ end, {
 })
 
 map("n", "<leader>ls", function()
-  local window = require("utils.window")
-
-  window.close_other_panels_and_toggle(function()
+  require("utils.window").toggle_panel(function()
     require("outline").toggle()
   end, "Outline")
 end, { desc = "Toggle Outline" })

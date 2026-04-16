@@ -8,21 +8,27 @@ return {
     {
       "<leader>S",
       function()
-        require("spectre").toggle()
+        require("utils.window").toggle_panel(function()
+          require("spectre").toggle()
+        end, "spectre_panel")
       end,
       desc = "Toggle Spectre",
     },
     {
       "<leader>Sw",
       function()
-        require("spectre").open_visual({ select_word = true })
+        require("utils.window").toggle_panel(function()
+          require("spectre").open_visual({ select_word = true })
+        end, "spectre_panel")
       end,
       desc = "Search current word",
     },
     {
       "<leader>Sw",
       function()
-        require("spectre").open_visual()
+        require("utils.window").toggle_panel(function()
+          require("spectre").open_visual()
+        end, "spectre_panel")
       end,
       mode = "v",
       desc = "Search current word",
@@ -30,7 +36,9 @@ return {
     {
       "<leader>Sp",
       function()
-        require("spectre").open_file_search({ select_word = true })
+        require("utils.window").toggle_panel(function()
+          require("spectre").open_file_search({ select_word = true })
+        end, "spectre_panel")
       end,
       desc = "Search on current file",
     },

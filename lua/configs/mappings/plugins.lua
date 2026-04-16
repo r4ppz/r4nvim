@@ -1,4 +1,4 @@
-local window = require("utils.window")
+local win_util = require("utils.window")
 local map = vim.keymap.set
 
 -- Uses plugins? (other keybinds are in the plugin Lua files)
@@ -12,7 +12,7 @@ map("n", "<leader>n", "<cmd>enew<CR>", { desc = "Buffer new" })
 map(
   { "n", "v" },
   "<M-Right>",
-  window.safe_buf_action(function()
+  win_util.safe_buf_action(function()
     require("nvchad.tabufline").next()
   end),
   { desc = "Buffer goto next" }
@@ -20,7 +20,7 @@ map(
 map(
   { "n", "v" },
   "<M-Left>",
-  window.safe_buf_action(function()
+  win_util.safe_buf_action(function()
     require("nvchad.tabufline").prev()
   end),
   { desc = "Buffer goto prev" }
@@ -30,7 +30,7 @@ map(
 map(
   { "n", "v" },
   "<C-M-Right>",
-  window.safe_buf_action(function()
+  win_util.safe_buf_action(function()
     require("nvchad.tabufline").move_buf(1)
   end),
   { desc = "move buffer to the right" }
@@ -38,7 +38,7 @@ map(
 map(
   { "n", "v" },
   "<C-M-Left>",
-  window.safe_buf_action(function()
+  win_util.safe_buf_action(function()
     require("nvchad.tabufline").move_buf(-1)
   end),
   { desc = "move buffer to the left" }
@@ -48,7 +48,7 @@ map(
 map(
   "n",
   "<leader>q",
-  window.safe_buf_action(function()
+  win_util.safe_buf_action(function()
     require("nvchad.tabufline").close_buffer()
   end),
   { desc = "Buffer close" }
@@ -57,7 +57,7 @@ map(
 map(
   "n",
   "<M-q>",
-  window.safe_buf_action(function()
+  win_util.safe_buf_action(function()
     require("nvchad.tabufline").close_buffer()
   end),
   { desc = "Buffer close" }
@@ -66,7 +66,7 @@ map(
 map(
   "n",
   "<S-M-Q>",
-  window.safe_buf_action(function()
+  win_util.safe_buf_action(function()
     require("nvchad.tabufline").closeAllBufs(false)
   end),
   { desc = "Close all buffers except current" }
@@ -128,7 +128,7 @@ map({ "n", "t" }, "<A-w>", function()
     id = "float_term",
   }
 
-  window.focus_main_window()
+  win_util.focus_main_window()
   require("nvchad.term").toggle(config)
   map_close_terminal(config)
 end, { desc = "Toggle Floating Terminal" })
@@ -147,8 +147,8 @@ map({ "n", "t" }, "<M-b>", function()
     cmd = "btop",
   }
 
-  window.close_other_panels_and_toggle(function()
-    window.focus_main_window()
+  win_util.toggle_panel(function()
+    win_util.focus_main_window()
     require("nvchad.term").toggle(config)
   end, "NvTerm_float")
 
@@ -183,7 +183,7 @@ map({ "n", "t" }, "<M-S-d>", function()
     cmd = "lazydocker",
   }
 
-  window.focus_main_window()
+  win_util.focus_main_window()
   require("nvchad.term").toggle(config)
   map_close_terminal(config, "q")
 end, { desc = "Toggle LazyDocker" })
@@ -195,8 +195,8 @@ map({ "n", "t" }, "<A-s>", function()
     size = 0.5,
   }
 
-  window.close_other_panels_and_toggle(function()
-    window.focus_main_window()
+  win_util.toggle_panel(function()
+    win_util.focus_main_window()
     require("nvchad.term").toggle(config)
   end, "NvTerm_sp")
 
@@ -210,8 +210,8 @@ map({ "n", "t" }, "<A-v>", function()
     size = 0.5,
   }
 
-  window.close_other_panels_and_toggle(function()
-    window.focus_main_window()
+  win_util.toggle_panel(function()
+    win_util.focus_main_window()
     require("nvchad.term").toggle(config)
   end, "NvTerm_vsp")
 
