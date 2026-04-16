@@ -30,6 +30,7 @@ require("configs.mappings.git")
 -- x = Cut only
 --
 -- c, s, d, p = no yanking
+-- I hate the idea of delete/everything is cut/copy.
 --
 -- Arrow keys are the primary navigation, not hjkl.
 -- hjkl                 = Left/Down/Up/Right
