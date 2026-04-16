@@ -107,6 +107,21 @@ map("n", "<leader>ui", "<cmd>MasonInstallAll<cr>", { desc = "Mason Install ALl" 
 ---------------------------------------------------------------------
 -- TERMINAL MANAGEMENT
 
+local function map_close_terminal(config, extra_key)
+  local map_local = vim.keymap.set
+  -- Default
+  map_local("t", "<M-q>", function()
+    require("nvchad.term").toggle(config)
+  end, { buffer = 0 })
+
+  -- Optionally add an extra close key
+  if extra_key then
+    map_local("t", extra_key, function()
+      require("nvchad.term").toggle(config)
+    end, { buffer = 0 })
+  end
+end
+
 map({ "n", "t" }, "<A-w>", function()
   local config = {
     pos = "float",
@@ -115,7 +130,7 @@ map({ "n", "t" }, "<A-w>", function()
 
   window.focus_main_window()
   require("nvchad.term").toggle(config)
-  window.map_close_terminal(config)
+  map_close_terminal(config)
 end, { desc = "Toggle Floating Terminal" })
 
 map({ "n", "t" }, "<M-b>", function()
@@ -137,7 +152,7 @@ map({ "n", "t" }, "<M-b>", function()
     require("nvchad.term").toggle(config)
   end, "NvTerm_float")
 
-  window.map_close_terminal(config, "q")
+  map_close_terminal(config, "q")
 end, { desc = "Toggle Btop" })
 
 -- Docker floating terminal
@@ -170,7 +185,7 @@ map({ "n", "t" }, "<M-S-d>", function()
 
   window.focus_main_window()
   require("nvchad.term").toggle(config)
-  window.map_close_terminal(config, "q")
+  map_close_terminal(config, "q")
 end, { desc = "Toggle LazyDocker" })
 
 map({ "n", "t" }, "<A-s>", function()
@@ -185,7 +200,7 @@ map({ "n", "t" }, "<A-s>", function()
     require("nvchad.term").toggle(config)
   end, "NvTerm_sp")
 
-  window.map_close_terminal(config, "<M-c>")
+  map_close_terminal(config, "<M-c>")
 end, { desc = "Toggle Horizontal Terminal" })
 
 map({ "n", "t" }, "<A-v>", function()
@@ -200,7 +215,7 @@ map({ "n", "t" }, "<A-v>", function()
     require("nvchad.term").toggle(config)
   end, "NvTerm_vsp")
 
-  window.map_close_terminal(config, "<M-c>")
+  map_close_terminal(config, "<M-c>")
 end, { desc = "Toggle Vertical Terminal" })
 
 map("n", "<A-t>", function()

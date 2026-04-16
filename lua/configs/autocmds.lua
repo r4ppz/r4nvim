@@ -30,23 +30,6 @@ autocmd("BufReadPost", {
   end,
 })
 
-autocmd("WinEnter", {
-  group = mygroup,
-  desc = "Auto-close window if only special panel filetype remains",
-  callback = function()
-    local panels = {
-      "copilot-chat",
-      "Help",
-      "Outline",
-    }
-    local ft = vim.bo.filetype
-
-    if vim.tbl_contains(panels, ft) and #vim.api.nvim_list_wins() == 1 then
-      vim.cmd("quit")
-    end
-  end,
-})
-
 autocmd({
   "BufEnter",
   "CursorHold",

@@ -181,9 +181,5 @@ map({ "n", "v" }, "<S-M-Left>", ":vertical resize +2<CR>", { desc = "Increase wi
 
 -- Safe guard
 map("n", "<C-W>q", function()
-  if vim.fn.winnr("$") > 1 then
-    vim.cmd("q")
-  else
-    vim.notify("Cannot close the last window", vim.log.levels.WARN)
-  end
+  require("utils.window").close_window_safely()
 end, { desc = "Close window safely" })
