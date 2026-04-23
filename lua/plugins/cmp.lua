@@ -92,6 +92,8 @@ return {
         },
       },
 
+      preselect = cmp.PreselectMode.None,
+
       completion = {
         completeopt = "menu,menuone,noselect",
       },
