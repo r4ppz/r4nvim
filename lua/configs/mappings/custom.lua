@@ -18,21 +18,17 @@ map("i", "<M-Down>", "<C-o>o", { desc = "Insert below" })
 
 -- Undo and redo (this is like 10x better)
 map("n", "<M-a>", "u", { desc = "Undo" })
-map("i", "<M-a>", "<C-o>u", { desc = "Undo (Insert)" })
-map("v", "<M-a>", "u", { desc = "Undo (Visual)" })
 map("n", "<M-d>", "<C-r>", { desc = "Redo" })
-map("i", "<M-d>", "<C-o><C-r>", { desc = "Redo (Insert)" })
-map("v", "<M-d>", "<C-r>", { desc = "Redo (Visual)" })
+map("v", "<M-a>", "u", { desc = "Undo" })
+map("v", "<M-d>", "<C-r>", { desc = "Redo" })
+map("i", "<M-d>", "<Esc><C-r>", { desc = "Redo" })
+map("i", "<M-a>", "<Esc>u", { desc = "Undo" })
 
 -- Scroll half page and center
 map("n", "<S-Up>", "<C-u>zz", { desc = "Scroll half a page up and center" })
 map("n", "<S-Down>", "<C-d>zz", { desc = "Scroll half a page down and center" })
-map("i", "<S-Up>", "<C-o><C-u><C-o>zz", {
-  desc = "Scroll half a page up and center in insert mode",
-})
-map("i", "<S-Down>", "<C-o><C-d><C-o>zz", {
-  desc = "Scroll half a page down and center in insert mode",
-})
+map("i", "<S-Up>", "<C-o><C-u><C-o>zz", { desc = "Scroll half a page up and center" })
+map("i", "<S-Down>", "<C-o><C-d><C-o>zz", { desc = "Scroll half a page down and center" })
 
 -- Just for consistency
 map("n", "<C-u>", "<C-u>zz", { desc = "Scroll half a page up and center" })
