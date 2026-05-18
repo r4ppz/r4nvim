@@ -95,20 +95,20 @@ return {
 
         keymap = {
           preset = "none",
-
-          ["<C-b>"] = { "scroll_documentation_up", "fallback" },
-          ["<C-c>"] = { "hide", "fallback" },
+          ["<C-Up>"] = { "select_prev", "fallback" },
           ["<C-Down>"] = { "select_next", "fallback" },
-          ["<C-e>"] = { "hide", "fallback" },
-          ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+
+          ["<S-Tab>"] = { "insert_prev", "snippet_forward", "fallback" },
+          ["<Tab>"] = { "insert_next", "snippet_forward", "fallback" },
+
+          ["<S-Down>"] = { "scroll_documentation_down", "fallback" },
+          ["<S-Up>"] = { "scroll_documentation_up", "fallback" },
+
           ["<C-S-Down>"] = { "show", "show_documentation", "hide_documentation", "fallback" },
           ["<C-Space>"] = { "show", "show_documentation", "hide_documentation", "fallback" },
-          ["<C-Up>"] = { "select_prev", "fallback" },
+          ["<C-c>"] = { "hide", "fallback" },
+
           ["<CR>"] = { "accept", "fallback" },
-          ["<S-Down>"] = { "scroll_documentation_down", "fallback" },
-          ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
-          ["<S-Up>"] = { "scroll_documentation_up", "fallback" },
-          ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
         },
 
         signature = {
