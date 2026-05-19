@@ -55,7 +55,7 @@ end
 -- Double-tap logic for native hover
 local HOVER_DOUBLE_TAP_MS = 300
 local last_hover_time = 0
-function M.hover_with_enter()
+function M.custom_hover()
   local now = vim.loop.now()
   if now - last_hover_time < HOVER_DOUBLE_TAP_MS then
     for _, win in ipairs(vim.api.nvim_list_wins()) do

@@ -1,10 +1,135 @@
 local map = require("utils.map")
 local hover = require("configs.hover")
 
---------------------------------------------------
--- LSP related
+-- LSP-dependent mappings
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("LspMappings", { clear = true }),
+  callback = function(args)
+    local buf = args.buf
 
-map("n", { "<S-C-Up>", "K" }, hover.hover_with_enter, { desc = "Custom Hover" })
+    map("n", { "<S-C-Up>", "K" }, hover.custom_hover, { buffer = buf, desc = "Custom Hover" })
+
+    map("n", "gR", "<cmd>Lspsaga finder ref+def+imp<CR>", {
+      buffer = buf,
+      desc = "Find References (including def and imp)",
+    })
+
+    map("n", "gr", function()
+      Snacks.picker.lsp_references({
+        auto_confirm = false,
+        title = "References",
+        layout = {
+          layout = {
+            box = "vertical",
+            row = -1,
+            width = 0,
+            height = 0.5,
+            border = "top",
+            {
+              box = "horizontal",
+              {
+                win = "list",
+                border = "none",
+              },
+              {
+                win = "preview",
+                title = "{preview}",
+                width = 0.5,
+                border = "left",
+              },
+            },
+          },
+        },
+      })
+    end, { buffer = buf, desc = "LSP References (Snacks)" })
+
+    map("n", "gd", function()
+      Snacks.picker.lsp_definitions()
+    end, { buffer = buf, desc = "Goto [d]efinition (Snacks)" })
+
+    map("n", "gi", function()
+      Snacks.picker.lsp_implementations()
+    end, { buffer = buf, desc = "Goto [I]mplementation (Snacks)" })
+
+    map("n", "gy", function()
+      Snacks.picker.lsp_type_definitions()
+    end, { buffer = buf, desc = "Goto T[y]pe Definition (Snacks)" })
+
+    map("n", "ge", function()
+      Snacks.picker.lsp_declarations()
+    end, { buffer = buf, desc = "Goto D[e]claration (Snacks)" })
+
+    map("n", { "gD", "<S-C-Down>" }, function()
+      require("lspeek").peek_definition()
+    end, {
+      buffer = buf,
+      desc = "Peek Definition (lspeek)",
+    })
+
+    map("n", "gT", "<cmd>Lspsaga peek_type_definition<CR>", {
+      buffer = buf,
+      desc = "Peek Type Definition",
+    })
+
+    map({ "n", "v" }, "<leader>la", "<cmd>Lspsaga code_action<CR>", {
+      buffer = buf,
+      desc = "Code Actions",
+    })
+
+    map("n", "<leader>lr", "<cmd>Lspsaga rename<CR>", {
+      buffer = buf,
+      desc = "Rename Symbol",
+    })
+
+    map("n", "<leader>li", function()
+      Snacks.picker.lsp_incoming_calls({
+        auto_confirm = false,
+        title = "References",
+        layout = {
+          preview = "main",
+          layout = {
+            backdrop = false,
+            width = 40,
+            min_width = 40,
+            height = 0,
+            position = "right",
+            border = "none",
+            box = "vertical",
+            { win = "list", border = "none" },
+            { win = "preview", title = "{preview}", height = 0.4, border = "top" },
+          },
+        },
+      })
+    end, {
+      buffer = buf,
+      desc = "Incoming Calls",
+    })
+
+    map("n", "<leader>lo", function()
+      Snacks.picker.lsp_outgoing_calls({
+        auto_confirm = false,
+        title = "References",
+        layout = {
+          preview = "main",
+          layout = {
+            backdrop = false,
+            width = 40,
+            min_width = 40,
+            height = 0,
+            position = "right",
+            border = "none",
+            box = "vertical",
+            { win = "list", border = "none" },
+            { win = "preview", title = "{preview}", height = 0.4, border = "top" },
+          },
+        },
+      })
+    end, {
+      buffer = buf,
+      desc = "Outgoing Calls",
+    })
+  end,
+})
 
 -- Silence err
 local function supports_selection_range()
@@ -37,74 +162,6 @@ map("n", "<leader>Lr", "<cmd>lsp restart<cr>", { desc = "Restart LSP" })
 map("n", "<leader>Li", "<cmd>checkhealth vim.lsp<cr>", { desc = "LSP Info" })
 map("n", "<leader>Ls", "<cmd>lsp stop<cr>", { desc = "LSP Stop" })
 
-map("n", "gR", "<cmd>Lspsaga finder ref+def+imp<CR>", {
-  desc = "Find References (including def and imp)",
-})
-
-map("n", "gr", function()
-  Snacks.picker.lsp_references({
-    auto_confirm = false,
-    title = "References",
-    layout = {
-      layout = {
-        box = "vertical",
-        row = -1,
-        width = 0,
-        height = 0.5,
-        border = "top",
-        {
-          box = "horizontal",
-          {
-            win = "list",
-            border = "none",
-          },
-          {
-            win = "preview",
-            title = "{preview}",
-            width = 0.5,
-            border = "left",
-          },
-        },
-      },
-    },
-  })
-end, { desc = "LSP References (Snacks)" })
-
-map("n", "gd", function()
-  Snacks.picker.lsp_definitions()
-end, { desc = "Goto [d]efinition (Snacks)" })
-
-map("n", "gi", function()
-  Snacks.picker.lsp_implementations()
-end, { desc = "Goto [I]mplementation (Snacks)" })
-
-map("n", "gy", function()
-  Snacks.picker.lsp_type_definitions()
-end, { desc = "Goto T[y]pe Definition (Snacks)" })
-
-map("n", "ge", function()
-  Snacks.picker.lsp_declarations()
-end, { desc = "Goto D[e]claration (Snacks)" })
-
-map("n", { "gD", "<S-C-Down>" }, function()
-  require("lspeek").peek_definition()
-end, {
-  desc = "Peek Definition (lspeek)",
-})
-
-map("n", "gT", "<cmd>Lspsaga peek_type_definition<CR>", {
-  desc = "Peek Type Definition",
-})
-
-map({ "n", "v" }, "<leader>la", "<cmd>Lspsaga code_action<CR>", {
-  desc = "Code Actions",
-})
-
-map("n", "<leader>lr", "<cmd>Lspsaga rename<CR>", {
-  desc = "Rename Symbol",
-})
-
--- Diagnostic Show
 map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", {
   desc = "Previous Diagnostic",
 })
@@ -122,59 +179,12 @@ map("n", "<leader>lw", "<cmd>Lspsaga show_workspace_diagnostics<CR>", {
   desc = "Show Workspace Diagnostics",
 })
 
-map("n", "<leader>li", function()
-  Snacks.picker.lsp_incoming_calls({
-    auto_confirm = false,
-    title = "References",
-    layout = {
-      preview = "main",
-      layout = {
-        backdrop = false,
-        width = 40,
-        min_width = 40,
-        height = 0,
-        position = "right",
-        border = "none",
-        box = "vertical",
-        { win = "list", border = "none" },
-        { win = "preview", title = "{preview}", height = 0.4, border = "top" },
-      },
-    },
-  })
-end, {
-  desc = "Incoming Calls",
-})
-
-map("n", "<leader>lo", function()
-  Snacks.picker.lsp_outgoing_calls({
-    auto_confirm = false,
-    title = "References",
-    layout = {
-      preview = "main",
-      layout = {
-        backdrop = false,
-        width = 40,
-        min_width = 40,
-        height = 0,
-        position = "right",
-        border = "none",
-        box = "vertical",
-        { win = "list", border = "none" },
-        { win = "preview", title = "{preview}", height = 0.4, border = "top" },
-      },
-    },
-  })
-end, {
-  desc = "Outgoing Calls",
-})
-
 map("n", "<leader>ls", function()
   require("utils.window").toggle_panel(function()
     require("outline").toggle()
   end, "Outline")
-end, { desc = "Toggle Outline" })
+end, { desc = "Toggle Outline Symbol" })
 
---Track the toggle state
 local diagnostics_visible = false
 map("n", "<leader>Ld", function()
   diagnostics_visible = not diagnostics_visible
@@ -183,12 +193,10 @@ map("n", "<leader>Ld", function()
     signs = diagnostics_visible,
     underline = diagnostics_visible,
 
-    -- Ensure defaults
     virtual_text = false,
     update_in_insert = false,
   })
 
-  -- Feedback
   if diagnostics_visible then
     print("Diagnostics Enabled (Signs/Underline)")
   else
