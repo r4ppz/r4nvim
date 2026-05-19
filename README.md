@@ -180,7 +180,7 @@ So having many plugins is not really that big of a deal.
 - antosha417/nvim-lsp-file-operations
 - nvimdev/lspsaga.nvim
 - r4ppz/lspeek.nvim
-- pmizio/typescript-tools.nvim
+- mfussenegger/nvim-lint
 - mfussenegger/nvim-jdtls
 - stevearc/conform.nvim
 - nvim-treesitter/nvim-treesitter
