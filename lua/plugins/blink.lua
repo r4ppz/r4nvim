@@ -99,7 +99,16 @@ return {
           ["<C-Down>"] = { "select_next", "fallback" },
 
           ["<S-Tab>"] = { "insert_prev", "snippet_forward", "fallback" },
-          ["<Tab>"] = { "insert_next", "snippet_forward", "fallback" },
+          ["<Tab>"] = {
+            function(cmp)
+              if cmp.is_visible() then
+                return cmp.select_next()
+              elseif cmp.snippet_active() then
+                return cmp.snippet_forward()
+              end
+            end,
+            "fallback",
+          },
 
           ["<S-Down>"] = { "scroll_documentation_down", "fallback" },
           ["<S-Up>"] = { "scroll_documentation_up", "fallback" },
