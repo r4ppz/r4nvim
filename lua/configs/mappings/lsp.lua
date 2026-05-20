@@ -76,7 +76,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
       desc = "Code Actions",
     })
 
-    map("n", "<leader>lr", "<cmd>Lspsaga rename<CR>", {
+    map("n", "<leader>lr", function()
+      require("nvchad.lsp.renamer")()
+    end, {
       buffer = buf,
       desc = "Rename Symbol",
     })
