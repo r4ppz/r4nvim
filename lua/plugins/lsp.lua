@@ -171,6 +171,15 @@ return {
     end,
   },
 
+  {
+    "folke/trouble.nvim",
+    event = "LspAttach",
+    opts = {
+      auto_close = true,
+      focus = true,
+    },
+  },
+
   -- Development
   {
     "r4ppz/lspeek.nvim",

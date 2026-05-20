@@ -171,14 +171,22 @@ map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", {
   desc = "Next Diagnostic",
 })
 
-map("n", "<leader>lD", "<cmd>Lspsaga show_line_diagnostics<CR>", {
-  desc = "Show Line Diagnostics",
+map("n", "<leader>ld", function()
+  require("trouble").toggle({
+    mode = "diagnostics",
+    filter = { buf = 0 },
+    source = "diagnostics",
+  })
+end, {
+  desc = "Buffer Diagnostics (Trouble)",
 })
-map("n", "<leader>ld", "<cmd>Lspsaga show_buf_diagnostics<CR>", {
-  desc = "Show Buffer Diagnostics",
-})
-map("n", "<leader>lw", "<cmd>Lspsaga show_workspace_diagnostics<CR>", {
-  desc = "Show Workspace Diagnostics",
+map("n", "<leader>lD", function()
+  require("trouble").toggle({
+    mode = "diagnostics",
+    source = "diagnostics",
+  })
+end, {
+  desc = "Workspace Diagnostics (Trouble)",
 })
 
 map("n", "<leader>ls", function()
