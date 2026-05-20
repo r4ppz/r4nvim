@@ -177,7 +177,6 @@ So having many plugins is not really that big of a deal.
 - neovim/nvim-lspconfig
 - williamboman/mason.nvim
 - williamboman/mason-lspconfig.nvim
-- antosha417/nvim-lsp-file-operations
 - nvimdev/lspsaga.nvim
 - r4ppz/lspeek.nvim
 - mfussenegger/nvim-lint

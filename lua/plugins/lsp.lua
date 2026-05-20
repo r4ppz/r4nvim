@@ -5,7 +5,6 @@ return {
     "neovim/nvim-lspconfig",
     event = "FileType",
     dependencies = {
-      "antosha417/nvim-lsp-file-operations",
       {
         "mason-org/mason.nvim",
         opts = function()
@@ -30,31 +29,6 @@ return {
           automatic_enable = false,
         },
       },
-
-      {
-        "antosha417/nvim-lsp-file-operations",
-        lazy = false,
-        priority = 1000,
-        dependencies = {
-          "nvim-lua/plenary.nvim",
-          "nvim-tree/nvim-tree.lua",
-        },
-        config = function()
-          require("lsp-file-operations").setup({
-            debug = false,
-            operations = {
-              willRenameFiles = true,
-              didRenameFiles = true,
-              willCreateFiles = true,
-              didCreateFiles = true,
-              willDeleteFiles = true,
-              didDeleteFiles = true,
-            },
-            timeout_ms = 10000,
-          })
-        end,
-      },
-
       "mfussenegger/nvim-jdtls",
     },
 
@@ -83,13 +57,6 @@ return {
             },
           },
         })
-
-      -- This tells the lsp that nvim can handle file renaming/moving
-      capabilities = vim.tbl_deep_extend(
-        "force",
-        capabilities,
-        require("lsp-file-operations").default_capabilities()
-      )
 
       vim.diagnostic.config({
         virtual_text = false,
