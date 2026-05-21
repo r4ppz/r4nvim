@@ -102,7 +102,7 @@ return {
           ["<Tab>"] = {
             function(cmp)
               if cmp.is_visible() then
-                return cmp.select_next()
+                return cmp.insert_next()
               elseif cmp.snippet_active() then
                 return cmp.snippet_forward()
               end

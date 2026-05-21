@@ -228,8 +228,6 @@ map("n", "<leader>uf", function()
   vim.cmd("luafile %")
 end, { desc = "Run current Lua file" })
 
-map("n", "<leader>ub", "<CMD>ToggleBool<CR>", { desc = "Toggle Boolean" })
-
 map("v", "<leader>ue", function()
   local start_pos = vim.fn.getpos("'<")
   local end_pos = vim.fn.getpos("'>")
@@ -257,6 +255,8 @@ end, { desc = "Run selected Lua snippet" })
 
 --------------------------------------------------------
 -- Toggle
+map("n", "<leader>tt", "<CMD>ToggleBool<CR>", { desc = "Toggle Boolean" })
+
 map("n", "<leader>tw", function()
   vim.wo.wrap = not vim.wo.wrap
 end, { desc = "Toggle line wrapping" })

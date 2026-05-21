@@ -82,6 +82,10 @@ return {
         for _, s in ipairs(servers.server_list) do
           vim.lsp.enable(s)
         end
+
+        for _, s in ipairs(servers.non_mason_server_list or {}) do
+          vim.lsp.enable(s)
+        end
       end
 
       -- Run setup
