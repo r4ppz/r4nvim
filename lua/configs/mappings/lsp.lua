@@ -9,9 +9,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     map("n", { "<S-C-Up>", "K" }, hover.custom_hover, { buffer = buf, desc = "Custom Hover" })
 
-    map("n", "gR", "<cmd>Lspsaga finder ref+def+imp<CR>", {
+    map("n", "gR", function()
+      require("trouble").toggle({ mode = "lsp_references", source = "lsp.references" })
+    end, {
       buffer = buf,
-      desc = "Find References (including def and imp)",
+      desc = "Find References (Trouble)",
     })
 
     map("n", "gr", function()
@@ -161,12 +163,13 @@ map("n", "<leader>Lr", "<cmd>lsp restart<cr>", { desc = "Restart LSP" })
 map("n", "<leader>Li", "<cmd>checkhealth vim.lsp<cr>", { desc = "LSP Info" })
 map("n", "<leader>Ls", "<cmd>lsp stop<cr>", { desc = "LSP Stop" })
 
-map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", {
-  desc = "Previous Diagnostic",
-})
-map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", {
-  desc = "Next Diagnostic",
-})
+-- Diagnostic navigation
+map("n", "[d", function()
+  vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to previous diagnostic" })
+map("n", "]d", function()
+  vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to next diagnostic" })
 
 map("n", "<leader>ld", function()
   require("trouble").toggle({
