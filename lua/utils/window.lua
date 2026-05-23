@@ -17,6 +17,7 @@ local EXCLUDED_FILETYPES = {
   "neo-tree",
   "Outline",
   "spectre_panel",
+  "trouble",
 }
 
 local EXCLUDED_BUFTYPES = {
