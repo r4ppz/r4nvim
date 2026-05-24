@@ -13,6 +13,7 @@ return {
       json = { "prettierd" },
       markdown = { "prettierd" },
       yaml = { "prettierd" },
+      qml = { "qmlformat" },
 
       lua = { "stylua" },
       sh = { "shfmt" },
@@ -24,6 +25,14 @@ return {
       go = { "gofmt" },
 
       ["_"] = { "trim_whitespace" },
+    },
+
+    formatters = {
+      qmlformat = {
+        command = "qmlformat",
+        stdin = false,
+        args = { "-i", "$FILENAME" },
+      },
     },
 
     format_after_save = {

@@ -224,35 +224,6 @@ map({ "n", "v" }, "<leader>uf", function()
   })
 end, { desc = "Format & Autofix File" })
 
-map("n", "<leader>uf", function()
-  vim.cmd("luafile %")
-end, { desc = "Run current Lua file" })
-
-map("v", "<leader>ue", function()
-  local start_pos = vim.fn.getpos("'<")
-  local end_pos = vim.fn.getpos("'>")
-
-  local lines = vim.api.nvim_buf_get_lines(0, start_pos[2] - 1, end_pos[2], false)
-
-  local chunk = table.concat(lines, "\n")
-
-  local fn, err = loadstring(chunk)
-  if not fn then
-    print(err)
-    return
-  end
-
-  local ok, result = pcall(fn)
-  if not ok then
-    print(result)
-    return
-  end
-
-  if result ~= nil then
-    print(vim.inspect(result))
-  end
-end, { desc = "Run selected Lua snippet" })
-
 --------------------------------------------------------
 -- Toggle
 map("n", "<leader>tt", "<CMD>ToggleBool<CR>", { desc = "Toggle Boolean" })
