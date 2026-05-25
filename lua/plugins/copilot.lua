@@ -28,7 +28,7 @@ return {
 
       window = {
         layout = "vertical",
-        width = 0.5,
+        width = 0.4,
       },
 
       headers = {

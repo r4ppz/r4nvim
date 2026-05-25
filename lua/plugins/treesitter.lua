@@ -25,6 +25,7 @@ return {
       "gitignore",
       "gitattributes",
       "regex",
+      "rasi",
 
       "sql",
       "lua",
