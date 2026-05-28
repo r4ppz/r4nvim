@@ -90,7 +90,7 @@ return {
 
         fuzzy = {
           implementation = "prefer_rust",
-          sorts = { "kind", "exact", "score", "sort_text" },
+          sorts = { "exact", "score", "sort_text", "kind" },
         },
 
         keymap = {
@@ -132,13 +132,10 @@ return {
         sources = {
           default = { "lsp", "snippets", "buffer", "path" },
           providers = {
-            buffer = {
-              max_items = 20,
-              min_keyword_length = 2,
-            },
-            path = {
-              min_keyword_length = 2,
-            },
+            lsp = { score_offset = 3 },
+            snippets = { score_offset = 0 },
+            buffer = { score_offset = -1, max_items = 20, min_keyword_length = 2 },
+            path = { score_offset = -2, min_keyword_length = 2 },
           },
         },
       })
