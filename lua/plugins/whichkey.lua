@@ -9,6 +9,7 @@ return {
       { "<leader>l", group = "LSP Keybinds", icon = "󰒋" },
       { "<leader>L", group = "LSP Utils", icon = "󰒋" },
       { "<leader>g", group = "Git", icon = "󰊢" },
+      { "<leader>G", group = "GitHub", icon = "" },
       { "<leader>c", group = "Copilot", icon = "" },
       { "<leader>f", group = "Picker", icon = "󰭎" },
       { "<leader>v", group = "NvChad", icon = "" },

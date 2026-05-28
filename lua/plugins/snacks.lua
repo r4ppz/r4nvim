@@ -35,6 +35,7 @@ return {
     },
 
     bigfile = {},
+    gh = {},
 
     notifier = {
       enabled = false,
@@ -45,10 +46,15 @@ return {
 
     picker = {
       enabled = true,
+
       sources = {
+        gh_issue = {},
+        gh_pr = {},
+
         files = { hidden = true, ignored = false },
         grep = { hidden = true },
       },
+
       win = {
         input = {
           keys = {
@@ -63,6 +69,35 @@ return {
     },
   },
   keys = {
+    {
+      "<leader>Gi",
+      function()
+        Snacks.picker.gh_issue()
+      end,
+      desc = "GitHub Issues (open)",
+    },
+    {
+      "<leader>GI",
+      function()
+        Snacks.picker.gh_issue({ state = "all" })
+      end,
+      desc = "GitHub Issues (all)",
+    },
+    {
+      "<leader>Gp",
+      function()
+        Snacks.picker.gh_pr()
+      end,
+      desc = "GitHub Pull Requests (open)",
+    },
+    {
+      "<leader>GP",
+      function()
+        Snacks.picker.gh_pr({ state = "all" })
+      end,
+      desc = "GitHub Pull Requests (all)",
+    },
+
     {
       "<M-f>",
       function()
