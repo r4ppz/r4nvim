@@ -34,6 +34,14 @@ o.inccommand = "nosplit"
 opt.smarttab = true
 opt.fillchars = { eob = " " }
 opt.pumheight = 15
+opt.diffopt = {
+  "internal",
+  "filler",
+  "closeoff",
+  "vertical",
+  "algorithm:histogram",
+  "indent-heuristic",
+}
 
 -- Scrolling
 o.scrolloff = 5

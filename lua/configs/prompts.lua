@@ -272,7 +272,6 @@ local prompts = {
         - Moved <file or function> to <reason>
     ]]),
     description = "Generate conventional commits",
-    system_prompt = system_prompt,
   },
 
   Idiomatic = {
