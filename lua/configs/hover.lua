@@ -37,8 +37,7 @@ function M.open_hover()
     all_lines = pad_lines(all_lines)
     all_lines = unescape_markdown(all_lines)
 
-    -- Native window creation replacing hover.nvim
-    vim.lsp.util.open_floating_preview(all_lines, "markdown", {
+    local _, winid = vim.lsp.util.open_floating_preview(all_lines, "markdown", {
       border = "single",
       max_width = 85,
       max_height = 15,
@@ -46,7 +45,9 @@ function M.open_hover()
       focus_id = "textDocument/hover",
     })
 
-    -- Highlights for the native floating window
+    vim.wo[winid].conceallevel = 3
+    vim.wo[winid].concealcursor = "nvic"
+
     vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
     vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#4F4F4F" })
   end)

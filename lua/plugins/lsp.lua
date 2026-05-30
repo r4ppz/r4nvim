@@ -29,7 +29,6 @@ return {
           automatic_enable = false,
         },
       },
-      "mfussenegger/nvim-jdtls",
     },
 
     config = function()

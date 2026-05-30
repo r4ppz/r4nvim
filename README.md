@@ -73,12 +73,10 @@ Vertical Terminal
 
 ---
 
-This repository is meant as a reference for me (for you too, to get inspiration maybe?) and to document my config.
+This repository is meant as a reference for me (and maybe for you too, to get inspiration) and to document my config.
 
-[Keybinds](lua/configs/mappings/mappings.lua) are heavily configured and personalized.
-This is to maintain consistency and compatibility with my compositor/WM, shell, terminal emulator, tmux, TUI apps, etc.
-
-Tmux/Hyprland/Waybar config can be found in this repo: [Arch-dotfiles](https://github.com/r4ppz/Arch-dotfiles)
+[Keymaps](lua/configs/mappings/mappings.lua) are heavily configured and personalized.
+This is to maintain consistency and compatibility with my _brain,_ Compositor/WM, TUI/GUI apps, Shell, Tmux/Terminal Emulator, etc.
 
 ---
 
@@ -161,12 +159,10 @@ LuaJIT 2.1.1774896198
 
 ## Plugins Used:
 
-> it's a lot 😬 though I am still cleaning up and optimizing my workflow.
-
-Startup time is still under 1 second (`~23 milliseconds`), so it's super duper fast compared to VSCode or typical IDEs.
-
 Almost all plugins are lazy loaded, meaning they load only when used, not on startup.
 So having many plugins is not really that big of a deal.
+
+This is why the startup time is under 1 second (`~23 milliseconds`); it's fast asf compared to VSCode or other IDEs.
 
 ```ini
 - folke/lazy.nvim
@@ -180,7 +176,6 @@ So having many plugins is not really that big of a deal.
 - folke/trouble.nvim
 - r4ppz/lspeek.nvim
 - mfussenegger/nvim-lint
-- mfussenegger/nvim-jdtls
 - stevearc/conform.nvim
 - nvim-treesitter/nvim-treesitter
 - chentoast/marks.nvim
@@ -200,8 +195,6 @@ So having many plugins is not really that big of a deal.
 - zbirenbaum/copilot.lua
 - CopilotC-Nvim/CopilotChat.nvim
 - nvim-pack/nvim-spectre
-- iamcco/markdown-preview.nvim
-- MeanderingProgrammer/render-markdown.nvim
 - nvimdev/dashboard-nvim
 - Bekaboo/dropbar.nvim
 - hedyhli/outline.nvim

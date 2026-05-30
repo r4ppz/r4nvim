@@ -3,7 +3,7 @@ local o = vim.o
 local g = vim.g
 
 opt.conceallevel = 3
-opt.concealcursor = "nc"
+opt.concealcursor = "nvic"
 
 -- Session
 opt.shada = ""

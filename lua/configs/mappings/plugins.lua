@@ -233,8 +233,8 @@ map("n", "<leader>tw", function()
 end, { desc = "Toggle line wrapping" })
 
 map("n", "<leader>tm", function()
-  require("render-markdown").toggle()
-end, { desc = "Toggle render-markdown" })
+  vim.o.conceallevel = (vim.o.conceallevel == 3) and 0 or 3
+end, { desc = "Toggle conceallevel" })
 
 ---------------------------------------------------------------------
 map({ "n", "v" }, "<leader>pm", "<cmd>Mason<CR>", { desc = "Mason UI" })
