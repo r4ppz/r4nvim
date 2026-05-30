@@ -1,7 +1,7 @@
 local M = {}
 
 M.non_mason_server_list = {
-  "qml-language-server",
+  -- "qml-language-server",
 }
 
 M.server_list = {
@@ -33,7 +33,7 @@ M.server_list = {
   "postgres_lsp",
   "gopls",
 
-  -- "qmlls",
+  "qmlls",
   "taplo",
   "lua_ls",
   "pyright",
