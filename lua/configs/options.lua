@@ -71,6 +71,7 @@ o.smartcase = true
 
 -- Mouse
 o.mouse = "a"
+opt.mousemodel = "extend"
 
 -- Performance
 o.updatetime = 300

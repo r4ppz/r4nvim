@@ -1,6 +1,4 @@
 return {
-  "nvim-lua/plenary.nvim",
-
   {
     "nvchad/base46",
     build = function()
@@ -14,12 +12,5 @@ return {
     config = function()
       require("nvchad")
     end,
-  },
-
-  { "nvzone/volt", lazy = true },
-
-  {
-    "nvzone/menu",
-    dependencies = { "nvzone/volt" },
   },
 }

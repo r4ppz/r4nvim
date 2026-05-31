@@ -168,8 +168,6 @@ This is why the startup time is under 1 second (`~23 milliseconds`); it's fast a
 - folke/lazy.nvim
 - nvchad/base46
 - nvchad/ui
-- nvzone/volt
-- nvzone/menu
 - neovim/nvim-lspconfig
 - williamboman/mason.nvim
 - williamboman/mason-lspconfig.nvim
@@ -200,7 +198,5 @@ This is why the startup time is under 1 second (`~23 milliseconds`); it's fast a
 - hedyhli/outline.nvim
 - folke/which-key.nvim
 - nvim-tree/nvim-web-devicons
-- chrishrb/gx.nvim
-- folke/todo-comments.nvim
 - nvim-lua/plenary.nvim
 ```
