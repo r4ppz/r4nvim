@@ -189,9 +189,9 @@ map("n", "<A-t>", function()
 end, { desc = "New Terminal Buffer" })
 
 --------------------------------------------------------
--- Utils
-map("n", "<leader>ul", "<CMD>CopyPathAndLine<CR>", { desc = "Copy file path and line number" })
-map("v", "<leader>ul", "<CMD>CopyPathAndLine<CR>", { desc = "Copy file path and line range" })
+-- Utilitys
+map("n", "<leader>y", "<CMD>CopyPathAndLine<CR>", { desc = "Copy file path & line number" })
+map("v", "<leader>y", "<CMD>CopyPathAndLine<CR>", { desc = "Copy file path & line range" })
 map({ "n", "v" }, "<leader>ub", "<cmd>BufInfo<CR>", { desc = "Get BufInfo" })
 map({ "n", "v" }, "<leader>uc", "<CMD>OpenConfig<CR>", { desc = "Open Neovim Config" })
 map({ "n", "v" }, "<leader>uh", "<cmd>checkhealth<cr>", { desc = "Check Health" })
