@@ -166,3 +166,9 @@ map(
   [[y<Cmd>let @/ = '\c\V' . escape(@", '/\')<CR>:set hlsearch<CR><Esc>]],
   { desc = "Highlight selection (no jump, case-insensitive)" }
 )
+
+map("n", "gx", function()
+  pcall(function()
+    vim.ui.open(vim.fn.expand("<cfile>"))
+  end)
+end, { desc = "Open URL under cursor" })

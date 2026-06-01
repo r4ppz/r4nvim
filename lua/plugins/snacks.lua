@@ -34,7 +34,14 @@ return {
       },
     },
 
-    bigfile = {},
+    bigfile = {
+      notify = true,
+      size = 1.5 * 1024 * 1024,
+      line_length = 1000,
+      line_count = 20000,
+    },
+
+    words = {},
     gh = {},
 
     notifier = {
@@ -69,6 +76,22 @@ return {
     },
   },
   keys = {
+    {
+      "]r",
+      function()
+        require("snacks.words").jump(1, true)
+      end,
+      desc = "Jump reference forward",
+    },
+
+    {
+      "[r",
+      function()
+        require("snacks.words").jump(-1, true)
+      end,
+      desc = "Jump reference backward",
+    },
+
     {
       "<leader>Gi",
       function()
@@ -184,14 +207,6 @@ return {
         })
       end,
       desc = "Grep Current Buffer (Snacks)",
-    },
-
-    {
-      "<leader>ft",
-      function()
-        Snacks.picker.todo_comments()
-      end,
-      desc = "Todo (Snacks)",
     },
 
     {

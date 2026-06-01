@@ -184,7 +184,6 @@ This is why the startup time is under 1 second (`~23 milliseconds`); it's fast a
 - nvim-mini/mini.surround
 - andymass/vim-matchup
 - lukas-reineke/indent-blankline.nvim
-- RRethy/vim-illuminate
 - nvim-tree/nvim-tree.lua
 - mikavilpas/yazi.nvim
 - folke/snacks.nvim

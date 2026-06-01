@@ -47,9 +47,6 @@ function M.open_hover()
 
     vim.wo[winid].conceallevel = 3
     vim.wo[winid].concealcursor = "nvic"
-
-    vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
-    vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#4F4F4F" })
   end)
 end
 

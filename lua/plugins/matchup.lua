@@ -17,26 +17,6 @@ return {
       })
     end)
 
-    vim.api.nvim_set_hl(0, "MatchParen", {
-      fg = "#83A598",
-      bg = "#444444",
-    })
-
-    vim.api.nvim_set_hl(0, "MatchParenCur", {
-      fg = "#83A598",
-      bg = "#444444",
-    })
-
-    vim.api.nvim_set_hl(0, "MatchWord", {
-      fg = "",
-      bg = "#444444",
-    })
-
-    vim.api.nvim_set_hl(0, "MatchWordCur", {
-      fg = "",
-      bg = "#444444",
-    })
-
     vim.keymap.set({ "n", "x", "o" }, "~", "<Plug>(matchup-%)", { desc = "Jump to matching pair" })
   end,
 }

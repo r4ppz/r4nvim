@@ -67,9 +67,6 @@ map(
 -- NVCHAD I think
 
 map("n", "<leader>vc", "<cmd>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" })
-map("n", "<leader>vt", function()
-  require("nvchad.themes").open()
-end, { desc = "telescope nvchad themes" })
 
 ---------------------------------------------------------------------
 -- TERMINAL MANAGEMENT
